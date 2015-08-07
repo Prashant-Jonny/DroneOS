@@ -13,7 +13,7 @@ public class SerialController
     {
         SerialPort _serialPort;
 
-        public void run()
+        public void run()  
         {
             if (!setComPort())
                 return;
