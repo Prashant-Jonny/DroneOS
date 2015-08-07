@@ -1,0 +1,7 @@
+C:\Users\Owen\Desktop\DroneOS\DroneOS\bin\Debug\DroneOS.exe.config
+C:\Users\Owen\Desktop\DroneOS\DroneOS\obj\Debug\DroneOS.csprojResolveAssemblyReference.cache
+C:\Users\Owen\Desktop\DroneOS\DroneOS\obj\Debug\DroneOSClient.CameraFeed.resources
+C:\Users\Owen\Desktop\DroneOS\DroneOS\obj\Debug\DroneOSClient.loginForm.resources
+C:\Users\Owen\Desktop\DroneOS\DroneOS\obj\Debug\DroneOSClient.Main.resources
+C:\Users\Owen\Desktop\DroneOS\DroneOS\obj\Debug\DroneOS.Properties.Resources.resources
+C:\Users\Owen\Desktop\DroneOS\DroneOS\obj\Debug\DroneOS.csproj.GenerateResource.Cache
