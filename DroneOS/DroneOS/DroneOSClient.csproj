@@ -11,6 +11,21 @@
     <AssemblyName>DroneOS</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +47,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -51,8 +68,9 @@
       <DependentUpon>CameraFeed.cs</DependentUpon>
     </Compile>
     <Compile Include="DroneOSClient.cs" />
-    <Compile Include="FlightEngine\CommandProcessor.cs" />
-    <Compile Include="FlightEngine\ControllerHandler.cs" />
+    <Compile Include="Handlers\MotorHandler.cs" />
+    <Compile Include="Handlers\ControllerHandler.cs" />
+    <Compile Include="Handlers\SerialCommandHandler.cs" />
     <Compile Include="FlightEngine\Step.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -70,7 +88,7 @@
     <Compile Include="NetworkEngine\Encrpytion.cs" />
     <Compile Include="NetworkEngine\PacketRecv.cs" />
     <Compile Include="NetworkEngine\PacketSend.cs" />
-    <Compile Include="NetworkEngine\SerialController.cs" />
+    <Compile Include="Handlers\SerialConHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CameraFeed.resx">
       <DependentUpon>CameraFeed.cs</DependentUpon>
@@ -104,7 +122,23 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\no-preview.jpg" />
   </ItemGroup>

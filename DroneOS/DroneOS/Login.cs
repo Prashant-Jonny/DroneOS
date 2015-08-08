@@ -26,19 +26,15 @@ namespace DroneOSClient
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            String username = txtUsername.Text.Trim();//Trim the trailing spaces off both the inputs.
+            String username = txtUsername.Text.ToLower().Trim();//Trim the trailing spaces off both the inputs and convert to lowercase
             String password = txtPassword.Text.Trim();
             if (username == "owen" && password == "test")
             {
-                //MessageBox.Show("Login successfull!"); // For debugging
-
                 this.Hide();//Hide this form, open the main form once login process is complete.
-
-                Main mainForm = new Main();
-                mainForm.ShowDialog();
+                mainForm f = new mainForm();
+                f.ShowDialog();
             } else
                 MessageBox.Show("Incorrect login info." + username + " " + password);
-
         }
     }
 }

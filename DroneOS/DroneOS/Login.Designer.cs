@@ -30,7 +30,7 @@ namespace DroneOSClient
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(loginForm));
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.serverStatusStrip = new System.Windows.Forms.StatusStrip();
             this.ServerStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblServerStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -38,19 +38,19 @@ namespace DroneOSClient
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.statusStrip1.SuspendLayout();
+            this.serverStatusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // statusStrip1
+            // serverStatusStrip
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.serverStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ServerStatus,
             this.lblServerStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 210);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(355, 22);
-            this.statusStrip1.TabIndex = 0;
-            this.statusStrip1.Text = "statusStrip1";
+            this.serverStatusStrip.Location = new System.Drawing.Point(0, 210);
+            this.serverStatusStrip.Name = "serverStatusStrip";
+            this.serverStatusStrip.Size = new System.Drawing.Size(355, 22);
+            this.serverStatusStrip.TabIndex = 0;
+            this.serverStatusStrip.Text = "statusStrip1";
             // 
             // ServerStatus
             // 
@@ -68,7 +68,7 @@ namespace DroneOSClient
             // btnLogin
             // 
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(140, 133);
+            this.btnLogin.Location = new System.Drawing.Point(140, 128);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(87, 28);
             this.btnLogin.TabIndex = 2;
@@ -127,13 +127,15 @@ namespace DroneOSClient
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.serverStatusStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "loginForm";
             this.Text = "DroneOS - Login";
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.serverStatusStrip.ResumeLayout(false);
+            this.serverStatusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,7 +143,7 @@ namespace DroneOSClient
 
         #endregion
 
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip serverStatusStrip;
         private System.Windows.Forms.ToolStripStatusLabel ServerStatus;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label lblUsername;
