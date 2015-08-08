@@ -36,10 +36,15 @@ namespace DroneOSClient
             this.txtConsole = new System.Windows.Forms.TextBox();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.droneOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFlightPlanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveFlightPlanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnOpenFlight = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSaveFlightAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnExit = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cameraFeedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rawToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.processedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.processedToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFlightPlan = new System.Windows.Forms.OpenFileDialog();
@@ -55,13 +60,13 @@ namespace DroneOSClient
             this.btnReverse = new System.Windows.Forms.Button();
             this.btnTranL = new System.Windows.Forms.Button();
             this.btnTranR = new System.Windows.Forms.Button();
-            this.cameraFeedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rawToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.processedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.processedToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnSaveFlight = new System.Windows.Forms.ToolStripMenuItem();
             this.mainStatusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainStatusStrip
@@ -82,26 +87,19 @@ namespace DroneOSClient
             // 
             // debugBox
             // 
-            this.debugBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.debugBox.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.debugBox.Location = new System.Drawing.Point(12, 33);
             this.debugBox.Name = "debugBox";
             this.debugBox.ReadOnly = true;
-            this.debugBox.Size = new System.Drawing.Size(392, 394);
+            this.debugBox.Size = new System.Drawing.Size(449, 394);
             this.debugBox.TabIndex = 2;
             this.debugBox.Text = "";
             // 
             // txtConsole
             // 
-            this.txtConsole.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtConsole.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConsole.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConsole.Location = new System.Drawing.Point(12, 433);
             this.txtConsole.Name = "txtConsole";
-            this.txtConsole.Size = new System.Drawing.Size(392, 23);
+            this.txtConsole.Size = new System.Drawing.Size(449, 22);
             this.txtConsole.TabIndex = 1;
             this.txtConsole.KeyDown += new System.Windows.Forms.KeyEventHandler(this.executeCommand);
             // 
@@ -121,35 +119,40 @@ namespace DroneOSClient
             // droneOSToolStripMenuItem
             // 
             this.droneOSToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openFlightPlanToolStripMenuItem,
-            this.saveFlightPlanToolStripMenuItem,
-            this.exitToolStripMenuItem});
+            this.btnOpenFlight,
+            this.btnSaveFlight,
+            this.btnSaveFlightAs,
+            this.btnExit});
             this.droneOSToolStripMenuItem.Name = "droneOSToolStripMenuItem";
             this.droneOSToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.droneOSToolStripMenuItem.Text = "DroneOS";
             // 
-            // openFlightPlanToolStripMenuItem
+            // btnOpenFlight
             // 
-            this.openFlightPlanToolStripMenuItem.Name = "openFlightPlanToolStripMenuItem";
-            this.openFlightPlanToolStripMenuItem.ShortcutKeyDisplayString = "";
-            this.openFlightPlanToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.openFlightPlanToolStripMenuItem.Text = "Open Flight Plan";
-            this.openFlightPlanToolStripMenuItem.Click += new System.EventHandler(this.openFlightDialog);
+            this.btnOpenFlight.Name = "btnOpenFlight";
+            this.btnOpenFlight.ShortcutKeyDisplayString = "";
+            this.btnOpenFlight.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.btnOpenFlight.Size = new System.Drawing.Size(236, 22);
+            this.btnOpenFlight.Text = "Open Flight Plan";
+            this.btnOpenFlight.Click += new System.EventHandler(this.openFlightDialog);
             // 
-            // saveFlightPlanToolStripMenuItem
+            // btnSaveFlightAs
             // 
-            this.saveFlightPlanToolStripMenuItem.Name = "saveFlightPlanToolStripMenuItem";
-            this.saveFlightPlanToolStripMenuItem.ShortcutKeyDisplayString = "";
-            this.saveFlightPlanToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.saveFlightPlanToolStripMenuItem.Text = "Save Flight Plan";
-            this.saveFlightPlanToolStripMenuItem.Click += new System.EventHandler(this.saveFlightDialog);
+            this.btnSaveFlightAs.Name = "btnSaveFlightAs";
+            this.btnSaveFlightAs.ShortcutKeyDisplayString = "";
+            this.btnSaveFlightAs.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.S)));
+            this.btnSaveFlightAs.Size = new System.Drawing.Size(236, 22);
+            this.btnSaveFlightAs.Text = "Save Flight Plan As";
+            this.btnSaveFlightAs.Click += new System.EventHandler(this.saveFlightDialog);
             // 
-            // exitToolStripMenuItem
+            // btnExit
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.mainExit);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.btnExit.Size = new System.Drawing.Size(236, 22);
+            this.btnExit.Text = "Exit";
+            this.btnExit.Click += new System.EventHandler(this.mainExit);
             // 
             // viewToolStripMenuItem
             // 
@@ -158,171 +161,6 @@ namespace DroneOSClient
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
-            // 
-            // connectionToolStripMenuItem
-            // 
-            this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
-            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
-            this.connectionToolStripMenuItem.Text = "Connection";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.btnAbout);
-            // 
-            // openFlightPlan
-            // 
-            this.openFlightPlan.FileName = "openFileDialog1";
-            this.openFlightPlan.Filter = "DroneOS Flight|*.pln";
-            // 
-            // saveFlightPlan
-            // 
-            this.saveFlightPlan.Filter = "DroneOS Flight|*.pln";
-            // 
-            // btnSurface
-            // 
-            this.btnSurface.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSurface.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSurface.Location = new System.Drawing.Point(892, 348);
-            this.btnSurface.Name = "btnSurface";
-            this.btnSurface.Size = new System.Drawing.Size(75, 30);
-            this.btnSurface.TabIndex = 3;
-            this.btnSurface.Text = "Surface";
-            this.btnSurface.UseVisualStyleBackColor = true;
-            // 
-            // btnStartStop
-            // 
-            this.btnStartStop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStartStop.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnStartStop.FlatAppearance.BorderColor = System.Drawing.Color.LightCoral;
-            this.btnStartStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStartStop.Location = new System.Drawing.Point(730, 393);
-            this.btnStartStop.Name = "btnStartStop";
-            this.btnStartStop.Size = new System.Drawing.Size(237, 63);
-            this.btnStartStop.TabIndex = 4;
-            this.btnStartStop.Text = "Start";
-            this.btnStartStop.UseVisualStyleBackColor = false;
-            this.btnStartStop.Click += new System.EventHandler(this.toggleStartStop);
-            // 
-            // btnManual
-            // 
-            this.btnManual.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnManual.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManual.Location = new System.Drawing.Point(730, 348);
-            this.btnManual.Name = "btnManual";
-            this.btnManual.Size = new System.Drawing.Size(75, 30);
-            this.btnManual.TabIndex = 5;
-            this.btnManual.Text = "Manual";
-            this.btnManual.UseVisualStyleBackColor = true;
-            this.btnManual.Click += new System.EventHandler(this.switchManAuto);
-            // 
-            // btnRaise
-            // 
-            this.btnRaise.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRaise.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRaise.Location = new System.Drawing.Point(811, 33);
-            this.btnRaise.Name = "btnRaise";
-            this.btnRaise.Size = new System.Drawing.Size(75, 30);
-            this.btnRaise.TabIndex = 6;
-            this.btnRaise.Text = "Rise";
-            this.btnRaise.UseVisualStyleBackColor = true;
-            // 
-            // btnDive
-            // 
-            this.btnDive.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDive.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDive.Location = new System.Drawing.Point(811, 69);
-            this.btnDive.Name = "btnDive";
-            this.btnDive.Size = new System.Drawing.Size(75, 30);
-            this.btnDive.TabIndex = 7;
-            this.btnDive.Text = "Dive";
-            this.btnDive.UseVisualStyleBackColor = true;
-            // 
-            // btnForward
-            // 
-            this.btnForward.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnForward.Location = new System.Drawing.Point(811, 122);
-            this.btnForward.Name = "btnForward";
-            this.btnForward.Size = new System.Drawing.Size(75, 30);
-            this.btnForward.TabIndex = 8;
-            this.btnForward.Text = "Forward";
-            this.btnForward.UseVisualStyleBackColor = true;
-            // 
-            // btnRotateR
-            // 
-            this.btnRotateR.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRotateR.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRotateR.Location = new System.Drawing.Point(892, 139);
-            this.btnRotateR.Name = "btnRotateR";
-            this.btnRotateR.Size = new System.Drawing.Size(75, 30);
-            this.btnRotateR.TabIndex = 9;
-            this.btnRotateR.Text = "Rotate R";
-            this.btnRotateR.UseVisualStyleBackColor = true;
-            // 
-            // btnRotateL
-            // 
-            this.btnRotateL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRotateL.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRotateL.Location = new System.Drawing.Point(732, 139);
-            this.btnRotateL.Name = "btnRotateL";
-            this.btnRotateL.Size = new System.Drawing.Size(75, 30);
-            this.btnRotateL.TabIndex = 10;
-            this.btnRotateL.Text = "Rotate L";
-            this.btnRotateL.UseVisualStyleBackColor = true;
-            // 
-            // btnReverse
-            // 
-            this.btnReverse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReverse.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReverse.Location = new System.Drawing.Point(811, 158);
-            this.btnReverse.Name = "btnReverse";
-            this.btnReverse.Size = new System.Drawing.Size(75, 30);
-            this.btnReverse.TabIndex = 11;
-            this.btnReverse.Text = "Reverse";
-            this.btnReverse.UseVisualStyleBackColor = true;
-            // 
-            // btnTranL
-            // 
-            this.btnTranL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTranL.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTranL.Location = new System.Drawing.Point(730, 50);
-            this.btnTranL.Name = "btnTranL";
-            this.btnTranL.Size = new System.Drawing.Size(75, 30);
-            this.btnTranL.TabIndex = 12;
-            this.btnTranL.Text = "Trans L";
-            this.btnTranL.UseVisualStyleBackColor = true;
-            // 
-            // btnTranR
-            // 
-            this.btnTranR.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTranR.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTranR.Location = new System.Drawing.Point(890, 50);
-            this.btnTranR.Name = "btnTranR";
-            this.btnTranR.Size = new System.Drawing.Size(75, 30);
-            this.btnTranR.TabIndex = 13;
-            this.btnTranR.Text = "Trans R";
-            this.btnTranR.UseVisualStyleBackColor = true;
             // 
             // cameraFeedToolStripMenuItem
             // 
@@ -359,26 +197,189 @@ namespace DroneOSClient
             this.processedToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.processedToolStripMenuItem1.Text = "2 Processed";
             // 
+            // connectionToolStripMenuItem
+            // 
+            this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
+            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
+            this.connectionToolStripMenuItem.Text = "Connection";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.btnAbout);
+            // 
+            // openFlightPlan
+            // 
+            this.openFlightPlan.FileName = "openFileDialog1";
+            this.openFlightPlan.Filter = "DroneOS Flight|*.pln";
+            // 
+            // saveFlightPlan
+            // 
+            this.saveFlightPlan.Filter = "DroneOS Flight|*.pln";
+            // 
+            // btnSurface
+            // 
+            this.btnSurface.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSurface.Location = new System.Drawing.Point(168, 19);
+            this.btnSurface.Name = "btnSurface";
+            this.btnSurface.Size = new System.Drawing.Size(75, 30);
+            this.btnSurface.TabIndex = 3;
+            this.btnSurface.Text = "Surface";
+            this.btnSurface.UseVisualStyleBackColor = true;
+            // 
+            // btnStartStop
+            // 
+            this.btnStartStop.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnStartStop.FlatAppearance.BorderColor = System.Drawing.Color.LightCoral;
+            this.btnStartStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStartStop.Location = new System.Drawing.Point(6, 64);
+            this.btnStartStop.Name = "btnStartStop";
+            this.btnStartStop.Size = new System.Drawing.Size(237, 63);
+            this.btnStartStop.TabIndex = 4;
+            this.btnStartStop.Text = "Start";
+            this.btnStartStop.UseVisualStyleBackColor = false;
+            this.btnStartStop.Click += new System.EventHandler(this.toggleStartStop);
+            // 
+            // btnManual
+            // 
+            this.btnManual.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManual.Location = new System.Drawing.Point(6, 19);
+            this.btnManual.Name = "btnManual";
+            this.btnManual.Size = new System.Drawing.Size(75, 30);
+            this.btnManual.TabIndex = 5;
+            this.btnManual.Text = "Manual";
+            this.btnManual.UseVisualStyleBackColor = true;
+            this.btnManual.Click += new System.EventHandler(this.switchManAuto);
+            // 
+            // btnRaise
+            // 
+            this.btnRaise.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRaise.Location = new System.Drawing.Point(93, 19);
+            this.btnRaise.Name = "btnRaise";
+            this.btnRaise.Size = new System.Drawing.Size(75, 30);
+            this.btnRaise.TabIndex = 6;
+            this.btnRaise.Text = "Rise";
+            this.btnRaise.UseVisualStyleBackColor = true;
+            // 
+            // btnDive
+            // 
+            this.btnDive.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDive.Location = new System.Drawing.Point(93, 55);
+            this.btnDive.Name = "btnDive";
+            this.btnDive.Size = new System.Drawing.Size(75, 30);
+            this.btnDive.TabIndex = 7;
+            this.btnDive.Text = "Dive";
+            this.btnDive.UseVisualStyleBackColor = true;
+            // 
+            // btnForward
+            // 
+            this.btnForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnForward.Location = new System.Drawing.Point(93, 108);
+            this.btnForward.Name = "btnForward";
+            this.btnForward.Size = new System.Drawing.Size(75, 30);
+            this.btnForward.TabIndex = 8;
+            this.btnForward.Text = "Forward";
+            this.btnForward.UseVisualStyleBackColor = true;
+            // 
+            // btnRotateR
+            // 
+            this.btnRotateR.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRotateR.Location = new System.Drawing.Point(174, 125);
+            this.btnRotateR.Name = "btnRotateR";
+            this.btnRotateR.Size = new System.Drawing.Size(75, 30);
+            this.btnRotateR.TabIndex = 9;
+            this.btnRotateR.Text = "Rotate R";
+            this.btnRotateR.UseVisualStyleBackColor = true;
+            // 
+            // btnRotateL
+            // 
+            this.btnRotateL.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRotateL.Location = new System.Drawing.Point(14, 125);
+            this.btnRotateL.Name = "btnRotateL";
+            this.btnRotateL.Size = new System.Drawing.Size(75, 30);
+            this.btnRotateL.TabIndex = 10;
+            this.btnRotateL.Text = "Rotate L";
+            this.btnRotateL.UseVisualStyleBackColor = true;
+            // 
+            // btnReverse
+            // 
+            this.btnReverse.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReverse.Location = new System.Drawing.Point(93, 144);
+            this.btnReverse.Name = "btnReverse";
+            this.btnReverse.Size = new System.Drawing.Size(75, 30);
+            this.btnReverse.TabIndex = 11;
+            this.btnReverse.Text = "Reverse";
+            this.btnReverse.UseVisualStyleBackColor = true;
+            // 
+            // btnTranL
+            // 
+            this.btnTranL.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTranL.Location = new System.Drawing.Point(12, 36);
+            this.btnTranL.Name = "btnTranL";
+            this.btnTranL.Size = new System.Drawing.Size(75, 30);
+            this.btnTranL.TabIndex = 12;
+            this.btnTranL.Text = "Trans L";
+            this.btnTranL.UseVisualStyleBackColor = true;
+            // 
+            // btnTranR
+            // 
+            this.btnTranR.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTranR.Location = new System.Drawing.Point(172, 36);
+            this.btnTranR.Name = "btnTranR";
+            this.btnTranR.Size = new System.Drawing.Size(75, 30);
+            this.btnTranR.TabIndex = 13;
+            this.btnTranR.Text = "Trans R";
+            this.btnTranR.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnTranR);
+            this.groupBox1.Controls.Add(this.btnTranL);
+            this.groupBox1.Controls.Add(this.btnReverse);
+            this.groupBox1.Controls.Add(this.btnRotateL);
+            this.groupBox1.Controls.Add(this.btnForward);
+            this.groupBox1.Controls.Add(this.btnDive);
+            this.groupBox1.Controls.Add(this.btnRaise);
+            this.groupBox1.Controls.Add(this.btnRotateR);
+            this.groupBox1.Location = new System.Drawing.Point(708, 33);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(259, 179);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Motor Controls";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnManual);
+            this.groupBox2.Controls.Add(this.btnSurface);
+            this.groupBox2.Controls.Add(this.btnStartStop);
+            this.groupBox2.Location = new System.Drawing.Point(708, 306);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(259, 149);
+            this.groupBox2.TabIndex = 15;
+            this.groupBox2.TabStop = false;
+            // 
+            // btnSaveFlight
+            // 
+            this.btnSaveFlight.Name = "btnSaveFlight";
+            this.btnSaveFlight.ShortcutKeyDisplayString = "";
+            this.btnSaveFlight.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.btnSaveFlight.Size = new System.Drawing.Size(236, 22);
+            this.btnSaveFlight.Text = "Save Flight Plan";
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(979, 490);
-            this.Controls.Add(this.btnTranR);
-            this.Controls.Add(this.btnTranL);
-            this.Controls.Add(this.btnReverse);
-            this.Controls.Add(this.btnRotateL);
-            this.Controls.Add(this.btnForward);
-            this.Controls.Add(this.btnDive);
-            this.Controls.Add(this.btnRaise);
-            this.Controls.Add(this.btnManual);
-            this.Controls.Add(this.btnStartStop);
-            this.Controls.Add(this.btnSurface);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtConsole);
             this.Controls.Add(this.debugBox);
             this.Controls.Add(this.mainStatusStrip);
             this.Controls.Add(this.menuStrip);
-            this.Controls.Add(this.btnRotateR);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.Name = "mainForm";
@@ -389,6 +390,8 @@ namespace DroneOSClient
             this.mainStatusStrip.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -402,9 +405,9 @@ namespace DroneOSClient
         private System.Windows.Forms.TextBox txtConsole;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem droneOSToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openFlightPlanToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveFlightPlanToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnOpenFlight;
+        private System.Windows.Forms.ToolStripMenuItem btnSaveFlightAs;
+        private System.Windows.Forms.ToolStripMenuItem btnExit;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStripMenuItem connectionToolStripMenuItem;
@@ -426,5 +429,8 @@ namespace DroneOSClient
         private ToolStripMenuItem rawToolStripMenuItem1;
         private ToolStripMenuItem processedToolStripMenuItem;
         private ToolStripMenuItem processedToolStripMenuItem1;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private ToolStripMenuItem btnSaveFlight;
     }
 }

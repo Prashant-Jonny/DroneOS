@@ -57,7 +57,7 @@ namespace DroneOSClient
 
         private void switchManAuto(object sender, EventArgs e)
         {
-            DroneOSClient.manualMode = !DroneOSClient.manualMode;
+            manuelControl = !manuelControl;
         }
 
         private void btnAbout(object sender, EventArgs e)

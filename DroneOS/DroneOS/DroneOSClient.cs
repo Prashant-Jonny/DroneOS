@@ -6,7 +6,6 @@ namespace DroneOSClient
     static class DroneOSClient
     {
         //Start static variables
-        public static Boolean manualMode {get; set;}
         //End static variables
 
         /// <summary>
@@ -15,7 +14,6 @@ namespace DroneOSClient
         [STAThread]
         static void Main()
         {
-            manualMode = true;//Defaults the drone into manuel mode.
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new loginForm());
