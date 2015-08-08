@@ -10,7 +10,7 @@ namespace DroneOSClient
         //Constants
         static bool manuelControl = true;
         static bool active = false;//wether or not the drone is active
-        static byte _debugFlag = 0;//0 = none, 1 = some, 2 = verbose
+        static byte debugFlag = 0;//0 = none, 1 = some, 2 = verbose
         public static mainForm _mainForm;//Self declaration to reference in other files
 
         public mainForm()
@@ -58,6 +58,16 @@ namespace DroneOSClient
         private void switchManAuto(object sender, EventArgs e)
         {
             manuelControl = !manuelControl;
+            if (manuelControl)
+            {
+                printConsoleln("Manuel Mode Active");
+                btnManual.Text = "Auto";
+            }
+            else
+            {
+                printConsoleln("Autonomous mode active");
+                btnManual.Text = "Manuel";
+            }
         }
 
         private void btnAbout(object sender, EventArgs e)
@@ -71,11 +81,13 @@ namespace DroneOSClient
             if (active)
             {
                 btnStartStop.BackColor = System.Drawing.Color.LightCoral;
-                btnStartStop.Text = "Stop";
+                printConsoleln("Program resumed");
+                btnStartStop.Text = "Pause";
             }
             else
             {
                 btnStartStop.BackColor = System.Drawing.Color.PaleGreen;
+                printConsoleln("Program paused");
                 btnStartStop.Text = "Start";
             }
         }
@@ -89,6 +101,11 @@ namespace DroneOSClient
         private void mainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnShutdown_click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Drone power shut down");
         }
     }
 }

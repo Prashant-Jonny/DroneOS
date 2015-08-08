@@ -10,7 +10,7 @@ namespace ControllerHandler
             GamePadState currentState = GamePad.GetState(PlayerIndex.One);
             if (!currentState.IsConnected)
                 return;
-
+            /**
             //Buttons
             if (currentState.Buttons.A == ButtonState.Pressed)
             {
@@ -33,7 +33,7 @@ namespace ControllerHandler
             }
 
             //Triggers
-            if (currentState.Triggers.Left == null)
+            if (currentState.Triggers.Left)
             {
                 // Button A is currently being pressed;
             }
@@ -41,7 +41,7 @@ namespace ControllerHandler
             if (currentState.Buttons.A == ButtonState.Pressed)
             {
                 // Button A is currently being pressed;
-            }
+            } */
         }
     }
 }

@@ -37,6 +37,7 @@ namespace DroneOSClient
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.droneOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnOpenFlight = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSaveFlight = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSaveFlightAs = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExit = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,7 +46,10 @@ namespace DroneOSClient
             this.rawToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.processedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.processedToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serverStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sSHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFlightPlan = new System.Windows.Forms.OpenFileDialog();
             this.saveFlightPlan = new System.Windows.Forms.SaveFileDialog();
@@ -62,11 +66,13 @@ namespace DroneOSClient
             this.btnTranR = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnSaveFlight = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnShutdown = new System.Windows.Forms.Button();
+            this.eventLog = new System.Diagnostics.EventLog();
             this.mainStatusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.eventLog)).BeginInit();
             this.SuspendLayout();
             // 
             // mainStatusStrip
@@ -87,15 +93,20 @@ namespace DroneOSClient
             // 
             // debugBox
             // 
+            this.debugBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.debugBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.debugBox.Location = new System.Drawing.Point(12, 33);
             this.debugBox.Name = "debugBox";
             this.debugBox.ReadOnly = true;
+            this.debugBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
             this.debugBox.Size = new System.Drawing.Size(449, 394);
             this.debugBox.TabIndex = 2;
             this.debugBox.Text = "";
             // 
             // txtConsole
             // 
+            this.txtConsole.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtConsole.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConsole.Location = new System.Drawing.Point(12, 433);
             this.txtConsole.Name = "txtConsole";
@@ -105,6 +116,7 @@ namespace DroneOSClient
             // 
             // menuStrip
             // 
+            this.menuStrip.BackColor = System.Drawing.SystemColors.Control;
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.droneOSToolStripMenuItem,
             this.viewToolStripMenuItem,
@@ -136,6 +148,14 @@ namespace DroneOSClient
             this.btnOpenFlight.Text = "Open Flight Plan";
             this.btnOpenFlight.Click += new System.EventHandler(this.openFlightDialog);
             // 
+            // btnSaveFlight
+            // 
+            this.btnSaveFlight.Name = "btnSaveFlight";
+            this.btnSaveFlight.ShortcutKeyDisplayString = "";
+            this.btnSaveFlight.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.btnSaveFlight.Size = new System.Drawing.Size(236, 22);
+            this.btnSaveFlight.Text = "Save Flight Plan";
+            // 
             // btnSaveFlightAs
             // 
             this.btnSaveFlightAs.Name = "btnSaveFlightAs";
@@ -157,7 +177,8 @@ namespace DroneOSClient
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cameraFeedToolStripMenuItem});
+            this.cameraFeedToolStripMenuItem,
+            this.debugToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
@@ -166,8 +187,8 @@ namespace DroneOSClient
             // 
             this.cameraFeedToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.rawToolStripMenuItem,
-            this.rawToolStripMenuItem1,
             this.processedToolStripMenuItem,
+            this.rawToolStripMenuItem1,
             this.processedToolStripMenuItem1});
             this.cameraFeedToolStripMenuItem.Name = "cameraFeedToolStripMenuItem";
             this.cameraFeedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
@@ -197,11 +218,32 @@ namespace DroneOSClient
             this.processedToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.processedToolStripMenuItem1.Text = "2 Processed";
             // 
+            // debugToolStripMenuItem
+            // 
+            this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
+            this.debugToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.debugToolStripMenuItem.Text = "Debug";
+            // 
             // connectionToolStripMenuItem
             // 
+            this.connectionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.serverStatusToolStripMenuItem,
+            this.sSHToolStripMenuItem});
             this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
             this.connectionToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             this.connectionToolStripMenuItem.Text = "Connection";
+            // 
+            // serverStatusToolStripMenuItem
+            // 
+            this.serverStatusToolStripMenuItem.Name = "serverStatusToolStripMenuItem";
+            this.serverStatusToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.serverStatusToolStripMenuItem.Text = "Server Status";
+            // 
+            // sSHToolStripMenuItem
+            // 
+            this.sSHToolStripMenuItem.Name = "sSHToolStripMenuItem";
+            this.sSHToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sSHToolStripMenuItem.Text = "SSH";
             // 
             // aboutToolStripMenuItem
             // 
@@ -222,7 +264,7 @@ namespace DroneOSClient
             // btnSurface
             // 
             this.btnSurface.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSurface.Location = new System.Drawing.Point(168, 19);
+            this.btnSurface.Location = new System.Drawing.Point(174, 34);
             this.btnSurface.Name = "btnSurface";
             this.btnSurface.Size = new System.Drawing.Size(75, 30);
             this.btnSurface.TabIndex = 3;
@@ -233,10 +275,10 @@ namespace DroneOSClient
             // 
             this.btnStartStop.BackColor = System.Drawing.Color.PaleGreen;
             this.btnStartStop.FlatAppearance.BorderColor = System.Drawing.Color.LightCoral;
-            this.btnStartStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStartStop.Location = new System.Drawing.Point(6, 64);
+            this.btnStartStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStartStop.Location = new System.Drawing.Point(12, 34);
             this.btnStartStop.Name = "btnStartStop";
-            this.btnStartStop.Size = new System.Drawing.Size(237, 63);
+            this.btnStartStop.Size = new System.Drawing.Size(75, 30);
             this.btnStartStop.TabIndex = 4;
             this.btnStartStop.Text = "Start";
             this.btnStartStop.UseVisualStyleBackColor = false;
@@ -245,11 +287,11 @@ namespace DroneOSClient
             // btnManual
             // 
             this.btnManual.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManual.Location = new System.Drawing.Point(6, 19);
+            this.btnManual.Location = new System.Drawing.Point(93, 34);
             this.btnManual.Name = "btnManual";
             this.btnManual.Size = new System.Drawing.Size(75, 30);
             this.btnManual.TabIndex = 5;
-            this.btnManual.Text = "Manual";
+            this.btnManual.Text = "Auto";
             this.btnManual.UseVisualStyleBackColor = true;
             this.btnManual.Click += new System.EventHandler(this.switchManAuto);
             // 
@@ -296,7 +338,7 @@ namespace DroneOSClient
             // btnRotateL
             // 
             this.btnRotateL.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRotateL.Location = new System.Drawing.Point(14, 125);
+            this.btnRotateL.Location = new System.Drawing.Point(12, 125);
             this.btnRotateL.Name = "btnRotateL";
             this.btnRotateL.Size = new System.Drawing.Size(75, 30);
             this.btnRotateL.TabIndex = 10;
@@ -326,7 +368,7 @@ namespace DroneOSClient
             // btnTranR
             // 
             this.btnTranR.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTranR.Location = new System.Drawing.Point(172, 36);
+            this.btnTranR.Location = new System.Drawing.Point(174, 36);
             this.btnTranR.Name = "btnTranR";
             this.btnTranR.Size = new System.Drawing.Size(75, 30);
             this.btnTranR.TabIndex = 13;
@@ -335,6 +377,7 @@ namespace DroneOSClient
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.btnTranR);
             this.groupBox1.Controls.Add(this.btnTranL);
             this.groupBox1.Controls.Add(this.btnReverse);
@@ -343,31 +386,45 @@ namespace DroneOSClient
             this.groupBox1.Controls.Add(this.btnDive);
             this.groupBox1.Controls.Add(this.btnRaise);
             this.groupBox1.Controls.Add(this.btnRotateR);
-            this.groupBox1.Location = new System.Drawing.Point(708, 33);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(708, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(259, 179);
+            this.groupBox1.Size = new System.Drawing.Size(259, 186);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Motor Controls";
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btnShutdown);
             this.groupBox2.Controls.Add(this.btnManual);
             this.groupBox2.Controls.Add(this.btnSurface);
             this.groupBox2.Controls.Add(this.btnStartStop);
-            this.groupBox2.Location = new System.Drawing.Point(708, 306);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(708, 323);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(259, 149);
+            this.groupBox2.Size = new System.Drawing.Size(259, 132);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Operational Status";
             // 
-            // btnSaveFlight
+            // btnShutdown
             // 
-            this.btnSaveFlight.Name = "btnSaveFlight";
-            this.btnSaveFlight.ShortcutKeyDisplayString = "";
-            this.btnSaveFlight.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.btnSaveFlight.Size = new System.Drawing.Size(236, 22);
-            this.btnSaveFlight.Text = "Save Flight Plan";
+            this.btnShutdown.BackColor = System.Drawing.Color.Red;
+            this.btnShutdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShutdown.ForeColor = System.Drawing.Color.White;
+            this.btnShutdown.Location = new System.Drawing.Point(12, 70);
+            this.btnShutdown.Name = "btnShutdown";
+            this.btnShutdown.Size = new System.Drawing.Size(237, 46);
+            this.btnShutdown.TabIndex = 6;
+            this.btnShutdown.Text = "Stop";
+            this.btnShutdown.UseVisualStyleBackColor = false;
+            this.btnShutdown.Click += new System.EventHandler(this.btnShutdown_click);
+            // 
+            // eventLog
+            // 
+            this.eventLog.SynchronizingObject = this;
             // 
             // mainForm
             // 
@@ -382,6 +439,7 @@ namespace DroneOSClient
             this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
+            this.MinimumSize = new System.Drawing.Size(995, 528);
             this.Name = "mainForm";
             this.Text = "DroneOS";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.exitProgram);
@@ -392,6 +450,7 @@ namespace DroneOSClient
             this.menuStrip.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.eventLog)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -432,5 +491,10 @@ namespace DroneOSClient
         private GroupBox groupBox1;
         private GroupBox groupBox2;
         private ToolStripMenuItem btnSaveFlight;
+        private System.Diagnostics.EventLog eventLog;
+        private ToolStripMenuItem serverStatusToolStripMenuItem;
+        private ToolStripMenuItem sSHToolStripMenuItem;
+        private Button btnShutdown;
+        private ToolStripMenuItem debugToolStripMenuItem;
     }
 }

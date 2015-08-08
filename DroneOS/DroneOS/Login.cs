@@ -16,6 +16,11 @@ namespace DroneOSClient
         {
             InitializeComponent();
             lblServerStatus.Text = "Offline";//Default setting.
+
+            //REMOVE AT PRODUCTION
+            this.Hide();//Hide this form, open the main form once login process is complete.
+            mainForm f = new mainForm();
+            f.ShowDialog();
         }
 
         private void loginShortcut(object sender, KeyEventArgs e)
