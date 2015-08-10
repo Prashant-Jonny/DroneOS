@@ -10,19 +10,16 @@ namespace DroneOS.Handlers
         {
             args = args.ToLower();
             string[] split = args.Split(' ');
-            MessageBox.Show("test command split: " + split.ToString());
 
-            if (split[0].Equals("test"))
-            {
-                print("TestCommand");
-            }
+            if (split[0].Equals("cls"))
+                mainForm._mainForm.cls();
             else
-                print("Not a command");
+                println("Not a command!");
         }
 
-        private static void print(String message) 
+        private static void println(String message) 
         {
-            mainForm._mainForm.printConsoleln(message);
+            mainForm._mainForm.println(message);
         }
     }
 }

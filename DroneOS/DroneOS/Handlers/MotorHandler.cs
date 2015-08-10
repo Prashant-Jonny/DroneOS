@@ -1,43 +1,50 @@
 ﻿using System.Windows.Forms;
 
-namespace DroneOSClient.Handlers
+namespace DroneOS.Handlers
 {
-    static class MotorControl
+    public class MotorControl
     {
-        static void ctrlForward(byte force)
+        private bool initialized {get; set;}
+
+        public MotorControl() {
+            initialized = true;
+        }
+
+        internal void ctrlForward(byte force)
+        {
+            //SerialConHandler
+        }
+
+        internal void ctrlReverse(byte force)
         {
         }
 
-        static void ctrlReverse(byte force)
+        internal void ctrlRotateL(byte force)
         {
         }
 
-        static void ctrlLeft(byte force)
+        internal void ctrlRotateR(byte force)
         {
         }
 
-        static void ctrlRight(byte force)
+        //Vertical and Scew Controls
+        internal void ctrlTransverseL(byte force)
         {
         }
 
-        //Vertical and scew
-        static void ctrlTransverseLeft(byte force)
+        internal void ctrlTransverseR(byte force)
         {
         }
 
-        static void ctrlTransverseRight(byte force)
+        internal void ctrlDive(byte force)
         {
         }
 
-        static void ctrlDive(byte force)
+        internal void ctrlRise(byte force)
         {
         }
 
-        static void ctrlRise(byte force)
-        {
-        }
-
-        static void ctrlSurface(byte force)
+        internal void ctrlSurface(byte force)
         {
         }
     }

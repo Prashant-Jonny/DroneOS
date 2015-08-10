@@ -29,6 +29,7 @@ namespace DroneOSClient
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.mainStatusStrip = new System.Windows.Forms.StatusStrip();
             this.lblServerStatus = new System.Windows.Forms.ToolStripStatusLabel();
@@ -43,10 +44,12 @@ namespace DroneOSClient
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cameraFeedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rawToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.processedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rawToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.processedToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iOPinsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.flightPlanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serverStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sSHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,14 +67,17 @@ namespace DroneOSClient
             this.btnReverse = new System.Windows.Forms.Button();
             this.btnTranL = new System.Windows.Forms.Button();
             this.btnTranR = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.MotorControlsGroup = new System.Windows.Forms.GroupBox();
+            this.OpsGroup = new System.Windows.Forms.GroupBox();
             this.btnShutdown = new System.Windows.Forms.Button();
             this.eventLog = new System.Diagnostics.EventLog();
+            this.mainTimer = new System.Windows.Forms.Timer(this.components);
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainStatusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.MotorControlsGroup.SuspendLayout();
+            this.OpsGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eventLog)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,10 +105,11 @@ namespace DroneOSClient
             this.debugBox.Location = new System.Drawing.Point(12, 33);
             this.debugBox.Name = "debugBox";
             this.debugBox.ReadOnly = true;
-            this.debugBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.debugBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.debugBox.Size = new System.Drawing.Size(449, 394);
             this.debugBox.TabIndex = 2;
             this.debugBox.Text = "";
+            this.debugBox.TextChanged += new System.EventHandler(this.debugBox_TextChanged);
             // 
             // txtConsole
             // 
@@ -120,6 +127,7 @@ namespace DroneOSClient
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.droneOSToolStripMenuItem,
             this.viewToolStripMenuItem,
+            this.flightPlanToolStripMenuItem,
             this.connectionToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
@@ -178,7 +186,9 @@ namespace DroneOSClient
             // 
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cameraFeedToolStripMenuItem,
-            this.debugToolStripMenuItem});
+            this.debugToolStripMenuItem,
+            this.iOPinsToolStripMenuItem,
+            this.optionsToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
@@ -200,17 +210,17 @@ namespace DroneOSClient
             this.rawToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.rawToolStripMenuItem.Text = "1 Raw";
             // 
-            // rawToolStripMenuItem1
-            // 
-            this.rawToolStripMenuItem1.Name = "rawToolStripMenuItem1";
-            this.rawToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.rawToolStripMenuItem1.Text = "2 Raw";
-            // 
             // processedToolStripMenuItem
             // 
             this.processedToolStripMenuItem.Name = "processedToolStripMenuItem";
             this.processedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.processedToolStripMenuItem.Text = "1 Processed";
+            // 
+            // rawToolStripMenuItem1
+            // 
+            this.rawToolStripMenuItem1.Name = "rawToolStripMenuItem1";
+            this.rawToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.rawToolStripMenuItem1.Text = "2 Raw";
             // 
             // processedToolStripMenuItem1
             // 
@@ -223,6 +233,20 @@ namespace DroneOSClient
             this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
             this.debugToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.debugToolStripMenuItem.Text = "Debug";
+            // 
+            // iOPinsToolStripMenuItem
+            // 
+            this.iOPinsToolStripMenuItem.Name = "iOPinsToolStripMenuItem";
+            this.iOPinsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.iOPinsToolStripMenuItem.Text = "I/O Pins";
+            // 
+            // flightPlanToolStripMenuItem
+            // 
+            this.flightPlanToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripMenuItem});
+            this.flightPlanToolStripMenuItem.Name = "flightPlanToolStripMenuItem";
+            this.flightPlanToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.flightPlanToolStripMenuItem.Text = "Flight Plan";
             // 
             // connectionToolStripMenuItem
             // 
@@ -304,6 +328,7 @@ namespace DroneOSClient
             this.btnRaise.TabIndex = 6;
             this.btnRaise.Text = "Rise";
             this.btnRaise.UseVisualStyleBackColor = true;
+            this.btnRaise.Click += new System.EventHandler(this.btnRaise_Click);
             // 
             // btnDive
             // 
@@ -314,6 +339,7 @@ namespace DroneOSClient
             this.btnDive.TabIndex = 7;
             this.btnDive.Text = "Dive";
             this.btnDive.UseVisualStyleBackColor = true;
+            this.btnDive.Click += new System.EventHandler(this.btnDive_Click);
             // 
             // btnForward
             // 
@@ -324,6 +350,7 @@ namespace DroneOSClient
             this.btnForward.TabIndex = 8;
             this.btnForward.Text = "Forward";
             this.btnForward.UseVisualStyleBackColor = true;
+            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
             // 
             // btnRotateR
             // 
@@ -334,6 +361,7 @@ namespace DroneOSClient
             this.btnRotateR.TabIndex = 9;
             this.btnRotateR.Text = "Rotate R";
             this.btnRotateR.UseVisualStyleBackColor = true;
+            this.btnRotateR.Click += new System.EventHandler(this.btnRotateR_Click);
             // 
             // btnRotateL
             // 
@@ -344,6 +372,7 @@ namespace DroneOSClient
             this.btnRotateL.TabIndex = 10;
             this.btnRotateL.Text = "Rotate L";
             this.btnRotateL.UseVisualStyleBackColor = true;
+            this.btnRotateL.Click += new System.EventHandler(this.btnRotateL_Click);
             // 
             // btnReverse
             // 
@@ -354,6 +383,7 @@ namespace DroneOSClient
             this.btnReverse.TabIndex = 11;
             this.btnReverse.Text = "Reverse";
             this.btnReverse.UseVisualStyleBackColor = true;
+            this.btnReverse.Click += new System.EventHandler(this.btnReverse_Click);
             // 
             // btnTranL
             // 
@@ -364,6 +394,7 @@ namespace DroneOSClient
             this.btnTranL.TabIndex = 12;
             this.btnTranL.Text = "Trans L";
             this.btnTranL.UseVisualStyleBackColor = true;
+            this.btnTranL.Click += new System.EventHandler(this.btnTranL_Click);
             // 
             // btnTranR
             // 
@@ -374,40 +405,41 @@ namespace DroneOSClient
             this.btnTranR.TabIndex = 13;
             this.btnTranR.Text = "Trans R";
             this.btnTranR.UseVisualStyleBackColor = true;
+            this.btnTranR.Click += new System.EventHandler(this.btnTranR_Click);
             // 
-            // groupBox1
+            // MotorControlsGroup
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.btnTranR);
-            this.groupBox1.Controls.Add(this.btnTranL);
-            this.groupBox1.Controls.Add(this.btnReverse);
-            this.groupBox1.Controls.Add(this.btnRotateL);
-            this.groupBox1.Controls.Add(this.btnForward);
-            this.groupBox1.Controls.Add(this.btnDive);
-            this.groupBox1.Controls.Add(this.btnRaise);
-            this.groupBox1.Controls.Add(this.btnRotateR);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(708, 27);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(259, 186);
-            this.groupBox1.TabIndex = 14;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Motor Controls";
+            this.MotorControlsGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MotorControlsGroup.Controls.Add(this.btnTranR);
+            this.MotorControlsGroup.Controls.Add(this.btnTranL);
+            this.MotorControlsGroup.Controls.Add(this.btnReverse);
+            this.MotorControlsGroup.Controls.Add(this.btnRotateL);
+            this.MotorControlsGroup.Controls.Add(this.btnForward);
+            this.MotorControlsGroup.Controls.Add(this.btnDive);
+            this.MotorControlsGroup.Controls.Add(this.btnRaise);
+            this.MotorControlsGroup.Controls.Add(this.btnRotateR);
+            this.MotorControlsGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MotorControlsGroup.Location = new System.Drawing.Point(708, 27);
+            this.MotorControlsGroup.Name = "MotorControlsGroup";
+            this.MotorControlsGroup.Size = new System.Drawing.Size(259, 186);
+            this.MotorControlsGroup.TabIndex = 14;
+            this.MotorControlsGroup.TabStop = false;
+            this.MotorControlsGroup.Text = "Motor Controls";
             // 
-            // groupBox2
+            // OpsGroup
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.btnShutdown);
-            this.groupBox2.Controls.Add(this.btnManual);
-            this.groupBox2.Controls.Add(this.btnSurface);
-            this.groupBox2.Controls.Add(this.btnStartStop);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(708, 323);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(259, 132);
-            this.groupBox2.TabIndex = 15;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Operational Status";
+            this.OpsGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.OpsGroup.Controls.Add(this.btnShutdown);
+            this.OpsGroup.Controls.Add(this.btnManual);
+            this.OpsGroup.Controls.Add(this.btnSurface);
+            this.OpsGroup.Controls.Add(this.btnStartStop);
+            this.OpsGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OpsGroup.Location = new System.Drawing.Point(708, 323);
+            this.OpsGroup.Name = "OpsGroup";
+            this.OpsGroup.Size = new System.Drawing.Size(259, 132);
+            this.OpsGroup.TabIndex = 15;
+            this.OpsGroup.TabStop = false;
+            this.OpsGroup.Text = "Operational Status";
             // 
             // btnShutdown
             // 
@@ -426,13 +458,30 @@ namespace DroneOSClient
             // 
             this.eventLog.SynchronizingObject = this;
             // 
+            // mainTimer
+            // 
+            this.mainTimer.Enabled = true;
+            this.mainTimer.Tick += new System.EventHandler(this.mainTimer_Tick);
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.optionsToolStripMenuItem.Text = "Options";
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Text = "New";
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(979, 490);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.OpsGroup);
+            this.Controls.Add(this.MotorControlsGroup);
             this.Controls.Add(this.txtConsole);
             this.Controls.Add(this.debugBox);
             this.Controls.Add(this.mainStatusStrip);
@@ -448,8 +497,8 @@ namespace DroneOSClient
             this.mainStatusStrip.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
+            this.MotorControlsGroup.ResumeLayout(false);
+            this.OpsGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.eventLog)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -488,13 +537,18 @@ namespace DroneOSClient
         private ToolStripMenuItem rawToolStripMenuItem1;
         private ToolStripMenuItem processedToolStripMenuItem;
         private ToolStripMenuItem processedToolStripMenuItem1;
-        private GroupBox groupBox1;
-        private GroupBox groupBox2;
+        private GroupBox MotorControlsGroup;
+        private GroupBox OpsGroup;
         private ToolStripMenuItem btnSaveFlight;
         private System.Diagnostics.EventLog eventLog;
         private ToolStripMenuItem serverStatusToolStripMenuItem;
         private ToolStripMenuItem sSHToolStripMenuItem;
         private Button btnShutdown;
         private ToolStripMenuItem debugToolStripMenuItem;
+        private ToolStripMenuItem iOPinsToolStripMenuItem;
+        private ToolStripMenuItem flightPlanToolStripMenuItem;
+        private Timer mainTimer;
+        private ToolStripMenuItem optionsToolStripMenuItem;
+        private ToolStripMenuItem newToolStripMenuItem;
     }
 }

@@ -24,3 +24,4 @@ C:\Users\Owen\Desktop\DroneOS\DroneOS\DroneOS\bin\Debug\Microsoft.Xna.Framework.
 C:\Users\Owen\Desktop\DroneOS\DroneOS\DroneOS\bin\Debug\Microsoft.Xna.Framework.Game.xml
 C:\Users\Owen\Desktop\DroneOS\DroneOS\DroneOS\bin\Debug\Microsoft.Xna.Framework.Graphics.xml
 C:\Users\Owen\Desktop\DroneOS\DroneOS\DroneOS\obj\Debug\DroneOSClient.mainForm.resources
+C:\Users\Owen\Desktop\DroneOS\DroneOS\DroneOS\obj\Debug\DroneOSClient.csprojResolveAssemblyReference.cache
