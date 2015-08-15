@@ -74,7 +74,7 @@ namespace DroneOS.Handlers
             }
         }
 
-        private void println(String message)
+        private void println(/*enum Error = NONE,*/ String message)
         {
             mainForm._mainForm.println(message);
         }
