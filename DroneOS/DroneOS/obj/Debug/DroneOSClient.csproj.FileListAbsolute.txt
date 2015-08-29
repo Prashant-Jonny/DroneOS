@@ -42,3 +42,12 @@ C:\Users\Owen\Desktop\DroneOS-master\DroneOS\DroneOS\bin\Debug\Microsoft.Xna.Fra
 C:\Users\Owen\Desktop\DroneOS-master\DroneOS\DroneOS\bin\Debug\Microsoft.Xna.Framework.xml
 C:\Users\Owen\Desktop\DroneOS-master\DroneOS\DroneOS\bin\Debug\Microsoft.Xna.Framework.Game.xml
 C:\Users\Owen\Desktop\DroneOS-master\DroneOS\DroneOS\bin\Debug\Microsoft.Xna.Framework.Graphics.xml
+F:\DroneOS\DroneOS\DroneOS\bin\Debug\DroneOS.exe.config
+F:\DroneOS\DroneOS\DroneOS\obj\Debug\DroneOS.exe
+F:\DroneOS\DroneOS\DroneOS\obj\Debug\DroneOS.pdb
+F:\DroneOS\DroneOS\DroneOS\obj\Debug\DroneOSClient.csprojResolveAssemblyReference.cache
+F:\DroneOS\DroneOS\DroneOS\obj\Debug\DroneOSClient.CameraFeed.resources
+F:\DroneOS\DroneOS\DroneOS\obj\Debug\DroneOSClient.loginForm.resources
+F:\DroneOS\DroneOS\DroneOS\obj\Debug\DroneOSClient.mainForm.resources
+F:\DroneOS\DroneOS\DroneOS\obj\Debug\DroneOS.Properties.Resources.resources
+F:\DroneOS\DroneOS\DroneOS\obj\Debug\DroneOSClient.csproj.GenerateResource.Cache

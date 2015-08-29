@@ -49,7 +49,9 @@ namespace DroneOSClient
             this.processedToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iOPinsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flightPlanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serverStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sSHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,8 +74,8 @@ namespace DroneOSClient
             this.btnShutdown = new System.Windows.Forms.Button();
             this.eventLog = new System.Diagnostics.EventLog();
             this.mainTimer = new System.Windows.Forms.Timer(this.components);
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRollLeft = new System.Windows.Forms.Button();
+            this.btnRollRight = new System.Windows.Forms.Button();
             this.mainStatusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.MotorControlsGroup.SuspendLayout();
@@ -201,44 +203,50 @@ namespace DroneOSClient
             this.rawToolStripMenuItem1,
             this.processedToolStripMenuItem1});
             this.cameraFeedToolStripMenuItem.Name = "cameraFeedToolStripMenuItem";
-            this.cameraFeedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cameraFeedToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.cameraFeedToolStripMenuItem.Text = "Camera Feed";
             // 
             // rawToolStripMenuItem
             // 
             this.rawToolStripMenuItem.Name = "rawToolStripMenuItem";
-            this.rawToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.rawToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.rawToolStripMenuItem.Text = "1 Raw";
             // 
             // processedToolStripMenuItem
             // 
             this.processedToolStripMenuItem.Name = "processedToolStripMenuItem";
-            this.processedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.processedToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.processedToolStripMenuItem.Text = "1 Processed";
             // 
             // rawToolStripMenuItem1
             // 
             this.rawToolStripMenuItem1.Name = "rawToolStripMenuItem1";
-            this.rawToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.rawToolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
             this.rawToolStripMenuItem1.Text = "2 Raw";
             // 
             // processedToolStripMenuItem1
             // 
             this.processedToolStripMenuItem1.Name = "processedToolStripMenuItem1";
-            this.processedToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.processedToolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
             this.processedToolStripMenuItem1.Text = "2 Processed";
             // 
             // debugToolStripMenuItem
             // 
             this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
-            this.debugToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.debugToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.debugToolStripMenuItem.Text = "Debug";
             // 
             // iOPinsToolStripMenuItem
             // 
             this.iOPinsToolStripMenuItem.Name = "iOPinsToolStripMenuItem";
-            this.iOPinsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.iOPinsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.iOPinsToolStripMenuItem.Text = "I/O Pins";
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.optionsToolStripMenuItem.Text = "Options";
             // 
             // flightPlanToolStripMenuItem
             // 
@@ -247,6 +255,12 @@ namespace DroneOSClient
             this.flightPlanToolStripMenuItem.Name = "flightPlanToolStripMenuItem";
             this.flightPlanToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.flightPlanToolStripMenuItem.Text = "Flight Plan";
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.newToolStripMenuItem.Text = "New";
             // 
             // connectionToolStripMenuItem
             // 
@@ -260,13 +274,13 @@ namespace DroneOSClient
             // serverStatusToolStripMenuItem
             // 
             this.serverStatusToolStripMenuItem.Name = "serverStatusToolStripMenuItem";
-            this.serverStatusToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.serverStatusToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.serverStatusToolStripMenuItem.Text = "Server Status";
             // 
             // sSHToolStripMenuItem
             // 
             this.sSHToolStripMenuItem.Name = "sSHToolStripMenuItem";
-            this.sSHToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sSHToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.sSHToolStripMenuItem.Text = "SSH";
             // 
             // aboutToolStripMenuItem
@@ -410,6 +424,8 @@ namespace DroneOSClient
             // MotorControlsGroup
             // 
             this.MotorControlsGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MotorControlsGroup.Controls.Add(this.btnRollRight);
+            this.MotorControlsGroup.Controls.Add(this.btnRollLeft);
             this.MotorControlsGroup.Controls.Add(this.btnTranR);
             this.MotorControlsGroup.Controls.Add(this.btnTranL);
             this.MotorControlsGroup.Controls.Add(this.btnReverse);
@@ -463,17 +479,27 @@ namespace DroneOSClient
             this.mainTimer.Enabled = true;
             this.mainTimer.Tick += new System.EventHandler(this.mainTimer_Tick);
             // 
-            // optionsToolStripMenuItem
+            // btnRollLeft
             // 
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.optionsToolStripMenuItem.Text = "Options";
+            this.btnRollLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRollLeft.Location = new System.Drawing.Point(12, 72);
+            this.btnRollLeft.Name = "btnRollLeft";
+            this.btnRollLeft.Size = new System.Drawing.Size(75, 30);
+            this.btnRollLeft.TabIndex = 14;
+            this.btnRollLeft.Text = "Roll L";
+            this.btnRollLeft.UseVisualStyleBackColor = true;
+            this.btnRollLeft.Click += new System.EventHandler(this.btnRollLeft_Click);
             // 
-            // newToolStripMenuItem
+            // btnRollRight
             // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.newToolStripMenuItem.Text = "New";
+            this.btnRollRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRollRight.Location = new System.Drawing.Point(174, 72);
+            this.btnRollRight.Name = "btnRollRight";
+            this.btnRollRight.Size = new System.Drawing.Size(75, 30);
+            this.btnRollRight.TabIndex = 15;
+            this.btnRollRight.Text = "Roll R";
+            this.btnRollRight.UseVisualStyleBackColor = true;
+            this.btnRollRight.Click += new System.EventHandler(this.btnRollRight_Click);
             // 
             // mainForm
             // 
@@ -550,5 +576,7 @@ namespace DroneOSClient
         private Timer mainTimer;
         private ToolStripMenuItem optionsToolStripMenuItem;
         private ToolStripMenuItem newToolStripMenuItem;
+        private Button btnRollLeft;
+        private Button btnRollRight;
     }
 }

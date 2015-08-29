@@ -93,7 +93,11 @@ namespace DroneOSClient
 
         private void btnAbout(object sender, EventArgs e)
         {
-            MessageBox.Show("Software developed by Owen Wolf (owen@gowolf.io)\r\n\r\n East Los Angeles College Robo Sub\r\n");
+            MessageBox.Show("Software developed by Owen Wolf (owen@gowolf.io)\r\n\r\n"
+                + "Krystal Bernal (krystalbc@sbcglobal.net) \r\n\r\n"
+                + "Steven Lemos \r\n\r\n"
+                + "Richard Navarete \r\n\r\n"
+                + "East Los Angeles College Robo Sub\r\n");
         }
 
         private void toggleStartStop(object sender, EventArgs e)
@@ -134,42 +138,42 @@ namespace DroneOSClient
         //Motor Controls
         private void btnRaise_Click(object sender, EventArgs e)
         {
-            motors.ctrlRise((byte) 10);
+            motors.ctrlRise((byte)5);
         }
 
         private void btnDive_Click(object sender, EventArgs e)
         {
-            motors.ctrlDive((byte)10);
+            motors.ctrlDive((byte)5);
         }
 
         private void btnTranL_Click(object sender, EventArgs e)
         {
-            motors.ctrlTransverseL((byte)10);
+            motors.ctrlTransverseL((byte)5);
         }
 
         private void btnTranR_Click(object sender, EventArgs e)
         {
-            motors.ctrlTransverseR((byte)10);
+            motors.ctrlTransverseR((byte)5);
         }
 
         private void btnRotateL_Click(object sender, EventArgs e)
         {
-            motors.ctrlRotateL((byte)10);
+            motors.ctrlRotateL((byte)5);
         }
 
         private void btnRotateR_Click(object sender, EventArgs e)
         {
-            motors.ctrlRotateR((byte)10);
+            motors.ctrlRotateR((byte)5);
         }
 
         private void btnForward_Click(object sender, EventArgs e)
         {
-            motors.ctrlForward((byte)10);
+            motors.ctrlForward((byte)5);
         }
 
         private void btnReverse_Click(object sender, EventArgs e)
         {
-            motors.ctrlReverse((byte)10);
+            motors.ctrlReverse((byte)5);
         }
 
         private void mainTimer_Tick(object sender, EventArgs e)
@@ -181,6 +185,16 @@ namespace DroneOSClient
         {
             debugBox.SelectionStart = debugBox.Text.Length; //Set the current caret position at the end
             debugBox.ScrollToCaret();//Now scroll it automatically
+        }
+
+        private void btnRollLeft_Click(object sender, EventArgs e)
+        {
+            motors.ctrlRollLeft(1);
+        }
+
+        private void btnRollRight_Click(object sender, EventArgs e)
+        {
+            motors.ctrlRollRight(1);
         }
     }
 }

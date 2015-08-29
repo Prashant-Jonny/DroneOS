@@ -3,6 +3,7 @@ using System;
 using System.IO.Ports;
 using System.Threading;
 using System.Windows.Forms;
+using DroneOS.Handlers;
 
 public class SerialConHandler
 {
@@ -61,14 +62,14 @@ public class SerialConHandler
 
             String textBuff = "byte: {";
             foreach (byte x in buffer)
-            {
                 textBuff += " " + x;
-            }
             println(textBuff + " }");
 
             _serialPort.Write(buffer, 0, 5);
             println("wrote to arduino");
             Thread.Sleep(200);
+            
+            //receiving
             int count = _serialPort.BytesToRead;
             println("return bytes: " + count);
             string returnMessage = "";
@@ -96,8 +97,8 @@ public class SerialConHandler
     /// <param name="opcode">Packet Opcode</param>
     /// <param name="control">Control #. Reference controls.txt<param>
     /// <param name="outPin">Arudino PWM out pin</param>
-    /// <param name="value">Force 1-10 to send to ESC</param>
-    public void sendControlPacket(byte opcode, byte control, byte outPin, byte value = 10)
+    /// <param name="value">Force 1-5 is positive, 6-10 is reverse, signal sent to ESC</param>
+    public void sendControlPacket(byte opcode, byte control, byte outPin, byte value = 1)
     {
         byte[] packet = new byte[5];
         packet[0] = Convert.ToByte(opcode);//TODO: create opcode files later
@@ -108,7 +109,7 @@ public class SerialConHandler
         sendPacket(packet);
     }
 
-    public void sendPacket(byte[] data)//TODO: add opcodes
+    public void sendPacket(byte[] data)
     {
         _serialPort.Write(data, 0, 5);
     }

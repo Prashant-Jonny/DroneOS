@@ -3,11 +3,14 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
 
+//using enums;
+
 namespace DroneOS.Handlers
 {
     public class ControllerProcessor
     {
         GamePadState gamePadState;
+        SerialConHandler serialCon = new SerialConHandler();
         public bool connected = true;//TODO: add functionality later
 
         //Sticks
@@ -15,6 +18,7 @@ namespace DroneOS.Handlers
         double leftY = 0;
         double rightX = 0;
         double rightY = 0;
+
 
         public void UpdateInput()
         {
@@ -37,7 +41,7 @@ namespace DroneOS.Handlers
             rightX = Math.Round((double)(gamePadState.ThumbSticks.Right.X * 100.0f));
             rightY = Math.Round((double)(gamePadState.ThumbSticks.Right.Y * 100.0f));
 
-            //Thumg Sticks
+            //Thumb Sticks
             if (leftX != 0) {
                 println("leftX: " + leftX);
             }
@@ -49,8 +53,24 @@ namespace DroneOS.Handlers
             if (rightY != 0)
                 println("rightY: " + rightY);
 
+            //Send to Serial
+            if (leftY < -5)
+                serialCon.sendControlPacket((byte)enums.sendOpcodes.Control, (byte)enums.motors.left, 5, 6);
+            else if (leftY > 5)
+                serialCon.sendControlPacket((byte)enums.sendOpcodes.Control, (byte)enums.motors.left, 5, 1);
 
-            
+            if (rightY < -5)
+                serialCon.sendControlPacket((byte)enums.sendOpcodes.Control, (byte)enums.motors.right, 6, 6);
+            else if (rightY > 5)
+                serialCon.sendControlPacket((byte)enums.sendOpcodes.Control, (byte)enums.motors.right, 6, 1);
+
+        
+            if (gamePadState.Buttons.LeftShoulder == ButtonState.Pressed)
+                serialCon.sendControlPacket((byte)enums.sendOpcodes.Control, (byte)enums.motors.vrt, 7, 1);
+
+            if (gamePadState.Buttons.RightShoulder == ButtonState.Pressed)
+                serialCon.sendControlPacket((byte)enums.sendOpcodes.Control, (byte)enums.motors.vrt, 7, 1);
+
 
             //Buttons
             if (gamePadState.Buttons.A == ButtonState.Pressed)

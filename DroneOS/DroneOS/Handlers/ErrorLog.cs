@@ -7,8 +7,8 @@ namespace DroneOS.Handlers
     {
         public enum Error
         {
-            NONE,
-            FATAL,
+            NONE = 0,
+            FATAL = 1,
             WARNING,
             INFO
         }

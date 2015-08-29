@@ -68,6 +68,7 @@
       <DependentUpon>CameraFeed.cs</DependentUpon>
     </Compile>
     <Compile Include="DroneOSClient.cs" />
+    <Compile Include="Handlers\enums.cs" />
     <Compile Include="Handlers\ErrorLog.cs" />
     <Compile Include="Handlers\MotorHandler.cs" />
     <Compile Include="Handlers\ControllerHandler.cs" />
