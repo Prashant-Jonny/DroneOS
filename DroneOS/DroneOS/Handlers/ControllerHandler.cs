@@ -1,39 +1,45 @@
-﻿using DroneOS.Resources;
-using DroneOSClient;
+﻿using DroneOSClient;
+using DroneOSClient.NetworkEngine;
+using DroneOSClient.Resources;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
 
-namespace DroneOS.Handlers
+namespace DroneOSClient.Handlers
 {
-    public class ControllerProcessor
+    public class ControllerHandler
     {
         GamePadState gamePadState;
-        SerialCon serial = new SerialCon();
-        MotorHandler motors = new MotorHandler();
 
-        public bool connected = true;//TODO: add functionality later
+        private bool connected = true;
+        private SerialConn serial;
 
-        //Sticks
-        double leftX = 0;
-        double leftY = 0;
-        double rightX = 0;
-        double rightY = 0;
+        //Sticks, globally declares for performance.
+        private double leftX = 0;
+        private double leftY = 0;
+        private double rightX = 0;
+        private double rightY = 0;
 
+        public ControllerHandler(SerialConn s)
+        {
+            ErrorLog.println(Error.Info, "(4/5) ControllerHandler Started");
+            this.serial = s;
+        }
 
         public void UpdateInput()
         {
+            //Get all the buttons and stick values of the controller
             gamePadState = GamePad.GetState(PlayerIndex.One);
 
             if (!gamePadState.IsConnected && connected)
             {
                 connected = false;//Stops from spamming messages
-                println("Controller disconnected.");//TODO: stop this from spamming
+                println("Controller disconnected.");
                 return;
             }
             else if (gamePadState.IsConnected && !connected) {
-                println("Controller reconnected.");//TODO: stop this from spamming
-                connected = true;//Arm the controller detector
+                println("Controller reconnected.");
+                connected = true;//Arm the controller detector after it has been reconnected
             }
 
             leftX = Math.Round((double)(gamePadState.ThumbSticks.Left.X * 100.0f));
@@ -43,7 +49,7 @@ namespace DroneOS.Handlers
             rightY = Math.Round((double)(gamePadState.ThumbSticks.Right.Y * 100.0f));
 
             //Thumb Sticks
-            if (leftX != 0) {
+            /*if (leftX != 0) {
                 println("leftX: " + leftX);
             }
             if (leftY != 0)
@@ -52,26 +58,29 @@ namespace DroneOS.Handlers
             if (rightX != 0)
                 println("rightX: " + rightX);
             if (rightY != 0)
-                println("rightY: " + rightY);
+                println("rightY: " + rightY);*/
 
+            try { 
             //Send to Serial
             if (leftY < -5)
-                serial.betaControlPacket(1, ThrusterPins.left, 5, 6);
+                serial.sendPacket(PacketCreator.controlPacket(ThrusterPins.left, 2, true));
             else if (leftY > 5)
-                serial.betaControlPacket(1, ThrusterPins.left, 5, 1);
+                serial.sendPacket(PacketCreator.controlPacket(ThrusterPins.left, 1));
 
             if (rightY < -5)
-                serial.betaControlPacket(1, ThrusterPins.right, 6, 6);
+                serial.sendPacket(PacketCreator.controlPacket(ThrusterPins.right, 2, true));
             else if (rightY > 5)
-                serial.betaControlPacket(1, ThrusterPins.right, 6, 1);
+                serial.sendPacket(PacketCreator.controlPacket(ThrusterPins.right, 2));
 
         
             if (gamePadState.Buttons.LeftShoulder == ButtonState.Pressed)
-                serial.betaControlPacket(1, ThrusterPins.vrt, 7, 1);
+                serial.sendPacket(PacketCreator.controlPacket(ThrusterPins.vrt, 1, true));
 
             if (gamePadState.Buttons.RightShoulder == ButtonState.Pressed)
-                serial.betaControlPacket(1, ThrusterPins.vrt, 7, 1);
-
+                serial.sendPacket(PacketCreator.controlPacket(ThrusterPins.vrt, 1));
+            } catch (NullReferenceException e){
+                ErrorLog.println("serial con failure: " + e);
+            }
 
             //Buttons
             if (gamePadState.Buttons.A == ButtonState.Pressed)
@@ -97,7 +106,7 @@ namespace DroneOS.Handlers
 
         private void println(/*enum Error = NONE,*/ String message)
         {
-            mainForm._mainForm.println(message);
+            MainForm._mainForm.println(message);
         }
     }
 }

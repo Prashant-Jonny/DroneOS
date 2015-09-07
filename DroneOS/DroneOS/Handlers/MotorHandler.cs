@@ -1,17 +1,23 @@
-﻿using DroneOS.Resources;
+﻿using DroneOSClient.Resources;
 using DroneOSClient.NetworkEngine;
-using System.Windows.Forms;
+using DroneOSClient.Handlers;
 
-namespace DroneOS.Handlers
+namespace DroneOSClient.Handlers
 {
     public class MotorHandler
     {
-        private bool initialized { get; set; }
-        SerialCon serial = new SerialCon();
+        private bool init = false;
+        private SerialConn serial;
 
         public MotorHandler()
         {
-            initialized = true;
+            init = true;
+        }
+
+        public MotorHandler(SerialConn s)
+        {
+            ErrorLog.println(Error.Info, "(3/5) MotorHandler Started");
+            this.serial = s;
         }
 
         internal void ctrlForward(byte force)
@@ -68,7 +74,7 @@ namespace DroneOS.Handlers
 
         internal void ctrlSurface(byte force)
         {
-
+            //TODO: add functionality later.
         }
 
         internal void ctrlPitchUp(byte force)

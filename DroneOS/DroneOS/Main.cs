@@ -1,40 +1,50 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Threading;
-using DroneOS.Handlers;
+using DroneOSClient.Handlers;
+using DroneOSClient.Resources;
+using DroneOSClient.NetworkEngine;
 
 namespace DroneOSClient
 {
-    public partial class mainForm : Form
+    public partial class MainForm : Form
     {
         //Constants
-        public bool manuelControl {get; set;}
-        public bool active {get; set;}//wether or not the drone is active or "paused"
-        public byte debugFlag {get; set;}//0 = none, 1 = some, 2 = verbose
-        private bool goodStart {get; set;}
-        public static mainForm _mainForm;//Self declaration to reference in other files
+        public bool manuelControl { get; set; }
+        public bool active { get; set; }//wether or not the drone is active or "paused"
+        private bool goodStart = false;
+        public static MainForm _mainForm;//Self declaration to reference in other files
 
-        private MotorHandler motors = new MotorHandler();
-        private ControllerProcessor controller = new ControllerProcessor();
-        private SerialCommandHandler commandHandler = new SerialCommandHandler();
-        private SerialCon serialCon = new SerialCon();
+        //Connections
+        private SerialConn serial;
+        private TcpConn tcp;
 
-        public mainForm()
+        //Handlers
+        private MotorHandler motors;
+        private ControllerHandler controller;
+        private ConsoleCommandHandler commandHandler;
+
+        public MainForm()
         {
-            //process xbox
             InitializeComponent();
             _mainForm = this;
-            Thread serialConThread = new Thread(serialCon.startSerial);
-            serialConThread.Start();
+            //Start Cons
+            serial = new SerialConn();
+            tcp = new TcpConn();
+
+            //Start Handlers
+            motors = new MotorHandler(serial);
+            controller = new ControllerHandler(serial);
+            commandHandler = new ConsoleCommandHandler(serial);
         }
 
         private void executeCommand(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                println(txtConsole.Text);
-                SerialCommandHandler.processCommand(txtConsole.Text);
-                txtConsole.Text = "";//Clear console input after processing
+                println(txtConsoleInput.Text);
+                commandHandler.processCommand(txtConsoleInput.Text);
+                txtConsoleInput.Text = "";//Clear console input after processing
             }
         }
 
@@ -50,7 +60,7 @@ namespace DroneOSClient
             if (this.debugBox.InvokeRequired)
             {
                 SetTextCallback c = new SetTextCallback(println);
-                this.Invoke(c, new object[] {x});
+                this.Invoke(c, new object[] { x });
             }
             else
                 debugBox.AppendText(x + "\n");
@@ -93,11 +103,10 @@ namespace DroneOSClient
 
         private void btnAbout(object sender, EventArgs e)
         {
-            MessageBox.Show("Software developed by Owen Wolf (owen@gowolf.io)\r\n\r\n"
+            MessageBox.Show("Software developed by:\r\n"
+                + "Owen Wolf (owen@gowolf.io)\r\n"
                 + "Krystal Bernal (krystalbc@sbcglobal.net) \r\n\r\n"
-                + "Steven Lemos \r\n\r\n"
-                + "Richard Navarete \r\n\r\n"
-                + "East Los Angeles College Robo Sub\r\n");
+                + "For East Los Angeles College Robo Sub 2016\r\n");
         }
 
         private void toggleStartStop(object sender, EventArgs e)
@@ -105,6 +114,12 @@ namespace DroneOSClient
             active = !active;//Switch cases
             if (active)
             {
+                if (!goodStart)
+                {
+                    Form cameraForm = new CameraFeed();
+                    cameraForm.Show();
+                    goodStart = true;
+                }
                 btnStartStop.BackColor = System.Drawing.Color.LightCoral;
                 println("Program started");
                 btnStartStop.Text = "Pause";
@@ -119,8 +134,10 @@ namespace DroneOSClient
 
         private void exitProgram(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to exit?", "DroneOS", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            if (MessageBox.Show("Are you sure you want to exit?", "DroneOS Client", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 e.Cancel = true;// Cancel the Closing event from closing the form.
+            else
+                serial.closeCon();
         }
 
         private void mainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -195,13 +212,6 @@ namespace DroneOSClient
         private void btnRollRight_Click(object sender, EventArgs e)
         {
             motors.ctrlRollRight(1);
-        }
-
-        private void mainForm_Load(object sender, EventArgs e)
-        {
-            //Load Camera Form in background
-            Form cameraForm = new CameraFeed();
-            cameraForm.Show();
         }
     }
 }

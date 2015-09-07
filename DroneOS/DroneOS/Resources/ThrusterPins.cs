@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DroneOS.Resources
+﻿namespace DroneOSClient.Resources
 {
     public static class ThrusterPins
     {
-        public static byte right = 1,
-            left = 2,
+        public static byte right = 9,
+            left = 10,
+            vrt = 11,
             vrtFrontLeft = 0,
             vrtFrontRight = 0,
             vrtRearLeft = 0,
             vrtRearRight = 0,
             transFront = 0,
-            transRear = 0,
-            vrt = 3; //for beta vrt thruster only
+            transRear = 0; //for beta vrt thruster only
     }
 }

@@ -1,10 +1,12 @@
-﻿todo:
-add error handling enum to all classes
-motor control button light up
-serial com
-more threading
-get controller battery level, if applicable
+﻿ToDo:
+More threading
+XML mission planning
+XML documentatiion
+.ini file reading
 
-how long are packets in serial? dynamic or static? or both?
-
-this is a test.
+Start server software, possibly in python
+Add error filtering in settings form, add functionality
+Serial/TCP Disconnect handling
+ErrorLog output
+Ping reporting for network handling.
+UdpCon

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DroneOSClient.NetworkEngine
 {
-    class TcpCon
+    class Encrpytion
     {
     }
 }

@@ -77,7 +77,7 @@
             this.feedRaw1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.feedRaw1.Image = global::DroneOS.Properties.Resources.no_preview;
+            this.feedRaw1.Image = global::DroneOSClient.Properties.Resources.no_preview;
             this.feedRaw1.Location = new System.Drawing.Point(12, 36);
             this.feedRaw1.Name = "feedRaw1";
             this.feedRaw1.Size = new System.Drawing.Size(393, 268);
@@ -161,7 +161,7 @@
             // 
             this.feedProc1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.feedProc1.Image = global::DroneOS.Properties.Resources.no_preview;
+            this.feedProc1.Image = global::DroneOSClient.Properties.Resources.no_preview;
             this.feedProc1.Location = new System.Drawing.Point(422, 36);
             this.feedProc1.Name = "feedProc1";
             this.feedProc1.Size = new System.Drawing.Size(393, 268);
@@ -174,7 +174,7 @@
             this.feedRaw2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.feedRaw2.Image = global::DroneOS.Properties.Resources.no_preview;
+            this.feedRaw2.Image = global::DroneOSClient.Properties.Resources.no_preview;
             this.feedRaw2.Location = new System.Drawing.Point(12, 345);
             this.feedRaw2.Name = "feedRaw2";
             this.feedRaw2.Size = new System.Drawing.Size(393, 268);
@@ -186,7 +186,7 @@
             // 
             this.feedProc2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.feedProc2.Image = global::DroneOS.Properties.Resources.no_preview;
+            this.feedProc2.Image = global::DroneOSClient.Properties.Resources.no_preview;
             this.feedProc2.Location = new System.Drawing.Point(422, 345);
             this.feedProc2.Name = "feedProc2";
             this.feedProc2.Size = new System.Drawing.Size(393, 268);

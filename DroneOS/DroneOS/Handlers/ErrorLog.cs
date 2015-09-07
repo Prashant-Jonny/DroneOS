@@ -1,21 +1,24 @@
 ﻿using DroneOSClient;
 using System;
 
-namespace DroneOS.Handlers
+namespace DroneOSClient.Handlers
 {
+    enum Error
+    {
+        Info, Warning, Fatal
+    }
+
     static class ErrorLog
     {
-        public enum Error : byte
+        public static void println(String message)
         {
-            NONE = 0,
-            FATAL = 1,
-            WARNING,
-            INFO
+            MainForm._mainForm.println(message);
         }
 
-        public static void println(String message, Error x = Error.NONE)
+        public static void println(Error e, String m)
         {
-            mainForm._mainForm.println(message);
+            MainForm._mainForm.println(m);
+            //MainForm._mainForm.println(e.ToString() + " : " + m);
         }
     }
 }

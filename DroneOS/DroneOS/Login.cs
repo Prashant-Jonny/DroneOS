@@ -12,7 +12,7 @@ namespace DroneOSClient
 
             //REMOVE AT PRODUCTION
             this.Hide();//Hide this form, open the main form once login process is complete.
-            mainForm f = new mainForm();
+            MainForm f = new MainForm();
             f.ShowDialog();
         }
 
@@ -29,7 +29,7 @@ namespace DroneOSClient
             if (username == "owen" && password == "test")
             {
                 this.Hide();//Hide this form, open the main form once login process is complete.
-                mainForm f = new mainForm();
+                MainForm f = new MainForm();
                 f.ShowDialog();
             } else
                 MessageBox.Show("Incorrect login info." + username + " " + password);

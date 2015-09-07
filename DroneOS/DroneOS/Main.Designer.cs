@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 namespace DroneOSClient
 {
-    partial class mainForm
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,11 +30,11 @@ namespace DroneOSClient
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.mainStatusStrip = new System.Windows.Forms.StatusStrip();
             this.lblServerStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.debugBox = new System.Windows.Forms.RichTextBox();
-            this.txtConsole = new System.Windows.Forms.TextBox();
+            this.txtConsoleInput = new System.Windows.Forms.TextBox();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.droneOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnOpenMission = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,18 +43,9 @@ namespace DroneOSClient
             this.btnExit = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cameraFeedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.processedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rawToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.processedToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iOPinsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MissionPlanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.serverStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sSHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openMissionPlan = new System.Windows.Forms.OpenFileDialog();
             this.saveMissionPlan = new System.Windows.Forms.SaveFileDialog();
@@ -76,6 +67,7 @@ namespace DroneOSClient
             this.btnShutdown = new System.Windows.Forms.Button();
             this.eventLog = new System.Diagnostics.EventLog();
             this.mainTimer = new System.Windows.Forms.Timer(this.components);
+            this.newMissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainStatusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.MotorControlsGroup.SuspendLayout();
@@ -113,15 +105,15 @@ namespace DroneOSClient
             this.debugBox.Text = "";
             this.debugBox.TextChanged += new System.EventHandler(this.debugBox_TextChanged);
             // 
-            // txtConsole
+            // txtConsoleInput
             // 
-            this.txtConsole.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtConsole.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConsole.Location = new System.Drawing.Point(12, 433);
-            this.txtConsole.Name = "txtConsole";
-            this.txtConsole.Size = new System.Drawing.Size(449, 22);
-            this.txtConsole.TabIndex = 1;
-            this.txtConsole.KeyDown += new System.Windows.Forms.KeyEventHandler(this.executeCommand);
+            this.txtConsoleInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtConsoleInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConsoleInput.Location = new System.Drawing.Point(12, 433);
+            this.txtConsoleInput.Name = "txtConsoleInput";
+            this.txtConsoleInput.Size = new System.Drawing.Size(449, 22);
+            this.txtConsoleInput.TabIndex = 1;
+            this.txtConsoleInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.executeCommand);
             // 
             // menuStrip
             // 
@@ -129,8 +121,6 @@ namespace DroneOSClient
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.droneOSToolStripMenuItem,
             this.viewToolStripMenuItem,
-            this.MissionPlanToolStripMenuItem,
-            this.connectionToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
@@ -141,6 +131,7 @@ namespace DroneOSClient
             // droneOSToolStripMenuItem
             // 
             this.droneOSToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newMissionToolStripMenuItem,
             this.btnOpenMission,
             this.btnSaveMission,
             this.btnSaveMissionAs,
@@ -197,91 +188,27 @@ namespace DroneOSClient
             // 
             // cameraFeedToolStripMenuItem
             // 
-            this.cameraFeedToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rawToolStripMenuItem,
-            this.processedToolStripMenuItem,
-            this.rawToolStripMenuItem1,
-            this.processedToolStripMenuItem1});
             this.cameraFeedToolStripMenuItem.Name = "cameraFeedToolStripMenuItem";
-            this.cameraFeedToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.cameraFeedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cameraFeedToolStripMenuItem.Text = "Camera Feed";
-            // 
-            // rawToolStripMenuItem
-            // 
-            this.rawToolStripMenuItem.Name = "rawToolStripMenuItem";
-            this.rawToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.rawToolStripMenuItem.Text = "1 Raw";
-            // 
-            // processedToolStripMenuItem
-            // 
-            this.processedToolStripMenuItem.Name = "processedToolStripMenuItem";
-            this.processedToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.processedToolStripMenuItem.Text = "1 Processed";
-            // 
-            // rawToolStripMenuItem1
-            // 
-            this.rawToolStripMenuItem1.Name = "rawToolStripMenuItem1";
-            this.rawToolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
-            this.rawToolStripMenuItem1.Text = "2 Raw";
-            // 
-            // processedToolStripMenuItem1
-            // 
-            this.processedToolStripMenuItem1.Name = "processedToolStripMenuItem1";
-            this.processedToolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
-            this.processedToolStripMenuItem1.Text = "2 Processed";
             // 
             // debugToolStripMenuItem
             // 
             this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
-            this.debugToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.debugToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.debugToolStripMenuItem.Text = "Debug";
             // 
             // iOPinsToolStripMenuItem
             // 
             this.iOPinsToolStripMenuItem.Name = "iOPinsToolStripMenuItem";
-            this.iOPinsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.iOPinsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.iOPinsToolStripMenuItem.Text = "I/O Pins";
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.optionsToolStripMenuItem.Text = "Options";
-            // 
-            // MissionPlanToolStripMenuItem
-            // 
-            this.MissionPlanToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem});
-            this.MissionPlanToolStripMenuItem.Name = "MissionPlanToolStripMenuItem";
-            this.MissionPlanToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
-            this.MissionPlanToolStripMenuItem.Text = "Mission Plan";
-            // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
-            this.newToolStripMenuItem.Text = "New";
-            // 
-            // connectionToolStripMenuItem
-            // 
-            this.connectionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.serverStatusToolStripMenuItem,
-            this.sSHToolStripMenuItem});
-            this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
-            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
-            this.connectionToolStripMenuItem.Text = "Connection";
-            // 
-            // serverStatusToolStripMenuItem
-            // 
-            this.serverStatusToolStripMenuItem.Name = "serverStatusToolStripMenuItem";
-            this.serverStatusToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.serverStatusToolStripMenuItem.Text = "Server Status";
-            // 
-            // sSHToolStripMenuItem
-            // 
-            this.sSHToolStripMenuItem.Name = "sSHToolStripMenuItem";
-            this.sSHToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.sSHToolStripMenuItem.Text = "SSH";
             // 
             // aboutToolStripMenuItem
             // 
@@ -292,12 +219,11 @@ namespace DroneOSClient
             // 
             // openMissionPlan
             // 
-            this.openMissionPlan.FileName = "openFileDialog1";
-            this.openMissionPlan.Filter = "DroneOS Mission|*.pln";
+            this.openMissionPlan.Filter = "DroneOS Mission|*.msn";
             // 
             // saveMissionPlan
             // 
-            this.saveMissionPlan.Filter = "DroneOS Mission|*.pln";
+            this.saveMissionPlan.Filter = "DroneOS Mission|*.msn";
             // 
             // btnSurface
             // 
@@ -501,25 +427,30 @@ namespace DroneOSClient
             this.mainTimer.Enabled = true;
             this.mainTimer.Tick += new System.EventHandler(this.mainTimer_Tick);
             // 
-            // mainForm
+            // newMissionToolStripMenuItem
+            // 
+            this.newMissionToolStripMenuItem.Name = "newMissionToolStripMenuItem";
+            this.newMissionToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.newMissionToolStripMenuItem.Text = "New Mission";
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(979, 490);
             this.Controls.Add(this.OpsGroup);
             this.Controls.Add(this.MotorControlsGroup);
-            this.Controls.Add(this.txtConsole);
+            this.Controls.Add(this.txtConsoleInput);
             this.Controls.Add(this.debugBox);
             this.Controls.Add(this.mainStatusStrip);
             this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.MinimumSize = new System.Drawing.Size(995, 528);
-            this.Name = "mainForm";
-            this.Text = "DroneOS";
+            this.Name = "MainForm";
+            this.Text = "DroneOS Client";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.exitProgram);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.mainForm_FormClosed);
-            this.Load += new System.EventHandler(this.mainForm_Load);
             this.mainStatusStrip.ResumeLayout(false);
             this.mainStatusStrip.PerformLayout();
             this.menuStrip.ResumeLayout(false);
@@ -537,7 +468,7 @@ namespace DroneOSClient
         private System.Windows.Forms.StatusStrip mainStatusStrip;
         private System.Windows.Forms.ToolStripStatusLabel lblServerStatus;
         private System.Windows.Forms.RichTextBox debugBox;
-        private System.Windows.Forms.TextBox txtConsole;
+        private System.Windows.Forms.TextBox txtConsoleInput;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem droneOSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem btnOpenMission;
@@ -545,7 +476,6 @@ namespace DroneOSClient
         private System.Windows.Forms.ToolStripMenuItem btnExit;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private ToolStripMenuItem connectionToolStripMenuItem;
         private OpenFileDialog openMissionPlan;
         private SaveFileDialog saveMissionPlan;
         private Button btnSurface;
@@ -560,24 +490,17 @@ namespace DroneOSClient
         private Button btnTranL;
         private Button btnTranR;
         private ToolStripMenuItem cameraFeedToolStripMenuItem;
-        private ToolStripMenuItem rawToolStripMenuItem;
-        private ToolStripMenuItem rawToolStripMenuItem1;
-        private ToolStripMenuItem processedToolStripMenuItem;
-        private ToolStripMenuItem processedToolStripMenuItem1;
         private GroupBox MotorControlsGroup;
         private GroupBox OpsGroup;
         private ToolStripMenuItem btnSaveMission;
         private System.Diagnostics.EventLog eventLog;
-        private ToolStripMenuItem serverStatusToolStripMenuItem;
-        private ToolStripMenuItem sSHToolStripMenuItem;
         private Button btnShutdown;
         private ToolStripMenuItem debugToolStripMenuItem;
         private ToolStripMenuItem iOPinsToolStripMenuItem;
-        private ToolStripMenuItem MissionPlanToolStripMenuItem;
         private Timer mainTimer;
         private ToolStripMenuItem optionsToolStripMenuItem;
-        private ToolStripMenuItem newToolStripMenuItem;
         private Button btnRollLeft;
         private Button btnRollRight;
+        private ToolStripMenuItem newMissionToolStripMenuItem;
     }
 }
