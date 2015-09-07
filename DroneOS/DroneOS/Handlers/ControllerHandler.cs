@@ -1,16 +1,17 @@
-﻿using DroneOSClient;
+﻿using DroneOS.Resources;
+using DroneOSClient;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
-
-//using enums;
 
 namespace DroneOS.Handlers
 {
     public class ControllerProcessor
     {
         GamePadState gamePadState;
-        SerialConHandler serialCon = new SerialConHandler();
+        SerialCon serial = new SerialCon();
+        MotorHandler motors = new MotorHandler();
+
         public bool connected = true;//TODO: add functionality later
 
         //Sticks
@@ -55,21 +56,21 @@ namespace DroneOS.Handlers
 
             //Send to Serial
             if (leftY < -5)
-                serialCon.sendControlPacket((byte)enums.sendOpcodes.Control, (byte)enums.motors.left, 5, 6);
+                serial.betaControlPacket(1, ThrusterPins.left, 5, 6);
             else if (leftY > 5)
-                serialCon.sendControlPacket((byte)enums.sendOpcodes.Control, (byte)enums.motors.left, 5, 1);
+                serial.betaControlPacket(1, ThrusterPins.left, 5, 1);
 
             if (rightY < -5)
-                serialCon.sendControlPacket((byte)enums.sendOpcodes.Control, (byte)enums.motors.right, 6, 6);
+                serial.betaControlPacket(1, ThrusterPins.right, 6, 6);
             else if (rightY > 5)
-                serialCon.sendControlPacket((byte)enums.sendOpcodes.Control, (byte)enums.motors.right, 6, 1);
+                serial.betaControlPacket(1, ThrusterPins.right, 6, 1);
 
         
             if (gamePadState.Buttons.LeftShoulder == ButtonState.Pressed)
-                serialCon.sendControlPacket((byte)enums.sendOpcodes.Control, (byte)enums.motors.vrt, 7, 1);
+                serial.betaControlPacket(1, ThrusterPins.vrt, 7, 1);
 
             if (gamePadState.Buttons.RightShoulder == ButtonState.Pressed)
-                serialCon.sendControlPacket((byte)enums.sendOpcodes.Control, (byte)enums.motors.vrt, 7, 1);
+                serial.betaControlPacket(1, ThrusterPins.vrt, 7, 1);
 
 
             //Buttons

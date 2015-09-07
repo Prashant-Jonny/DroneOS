@@ -68,12 +68,13 @@
       <DependentUpon>CameraFeed.cs</DependentUpon>
     </Compile>
     <Compile Include="DroneOSClient.cs" />
-    <Compile Include="Handlers\enums.cs" />
+    <Compile Include="Resources\Settings.cs" />
+    <Compile Include="Resources\Enums.cs" />
     <Compile Include="Handlers\ErrorLog.cs" />
     <Compile Include="Handlers\MotorHandler.cs" />
     <Compile Include="Handlers\ControllerHandler.cs" />
     <Compile Include="Handlers\SerialCommandHandler.cs" />
-    <Compile Include="FlightEngine\Step.cs" />
+    <Compile Include="MissionEngine\Step.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,12 +87,11 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="NetworkEngine\ConnectionServer.cs" />
-    <Compile Include="NetworkEngine\Encrpytion.cs" />
-    <Compile Include="NetworkEngine\PacketRecv.cs" />
-    <Compile Include="NetworkEngine\PacketSend.cs" />
-    <Compile Include="Handlers\SerialConHandler.cs" />
+    <Compile Include="NetworkEngine\PacketCreator.cs" />
+    <Compile Include="NetworkEngine\TcpCon.cs" />
+    <Compile Include="NetworkEngine\SerialCon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\ThrusterPins.cs" />
     <EmbeddedResource Include="CameraFeed.resx">
       <DependentUpon>CameraFeed.cs</DependentUpon>
     </EmbeddedResource>

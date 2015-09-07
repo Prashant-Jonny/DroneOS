@@ -3,9 +3,9 @@ using System;
 
 namespace DroneOS.Handlers
 {
-    class ErrorLog
+    static class ErrorLog
     {
-        public enum Error
+        public enum Error : byte
         {
             NONE = 0,
             FATAL = 1,
@@ -13,7 +13,7 @@ namespace DroneOS.Handlers
             INFO
         }
 
-        public void println(String message, Error x = Error.NONE)
+        public static void println(String message, Error x = Error.NONE)
         {
             mainForm._mainForm.println(message);
         }

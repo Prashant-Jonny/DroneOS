@@ -14,10 +14,10 @@ namespace DroneOSClient
         private bool goodStart {get; set;}
         public static mainForm _mainForm;//Self declaration to reference in other files
 
-        private MotorControl motors = new MotorControl();
+        private MotorHandler motors = new MotorHandler();
         private ControllerProcessor controller = new ControllerProcessor();
         private SerialCommandHandler commandHandler = new SerialCommandHandler();
-        private SerialConHandler serialCon = new SerialConHandler();
+        private SerialCon serialCon = new SerialCon();
 
         public mainForm()
         {
@@ -61,14 +61,14 @@ namespace DroneOSClient
             debugBox.Text = "";
         }
 
-        private void openFlightDialog(object sender, EventArgs e)
+        private void openMissionDialog(object sender, EventArgs e)
         {
-            openFlightPlan.ShowDialog();
+            openMissionPlan.ShowDialog();
         }
 
-        private void saveFlightDialog(object sender, EventArgs e)
+        private void saveMissionDialog(object sender, EventArgs e)
         {
-            saveFlightPlan.ShowDialog();
+            saveMissionPlan.ShowDialog();
         }
 
         private void mainExit(object sender, EventArgs e)
@@ -195,6 +195,13 @@ namespace DroneOSClient
         private void btnRollRight_Click(object sender, EventArgs e)
         {
             motors.ctrlRollRight(1);
+        }
+
+        private void mainForm_Load(object sender, EventArgs e)
+        {
+            //Load Camera Form in background
+            Form cameraForm = new CameraFeed();
+            cameraForm.Show();
         }
     }
 }

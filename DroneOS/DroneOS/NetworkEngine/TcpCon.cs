@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace DroneOSClient.NetworkEngine
 {
-    class PacketSend
+    class TcpCon
     {
-
-        public void sendKillCommand() {
-            //Kill packet
-        }
     }
 }

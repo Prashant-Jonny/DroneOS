@@ -37,9 +37,9 @@ namespace DroneOSClient
             this.txtConsole = new System.Windows.Forms.TextBox();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.droneOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnOpenFlight = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnSaveFlight = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnSaveFlightAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnOpenMission = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSaveMission = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSaveMissionAs = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExit = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cameraFeedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,14 +50,14 @@ namespace DroneOSClient
             this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iOPinsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.flightPlanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MissionPlanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serverStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sSHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFlightPlan = new System.Windows.Forms.OpenFileDialog();
-            this.saveFlightPlan = new System.Windows.Forms.SaveFileDialog();
+            this.openMissionPlan = new System.Windows.Forms.OpenFileDialog();
+            this.saveMissionPlan = new System.Windows.Forms.SaveFileDialog();
             this.btnSurface = new System.Windows.Forms.Button();
             this.btnStartStop = new System.Windows.Forms.Button();
             this.btnManual = new System.Windows.Forms.Button();
@@ -70,12 +70,12 @@ namespace DroneOSClient
             this.btnTranL = new System.Windows.Forms.Button();
             this.btnTranR = new System.Windows.Forms.Button();
             this.MotorControlsGroup = new System.Windows.Forms.GroupBox();
+            this.btnRollRight = new System.Windows.Forms.Button();
+            this.btnRollLeft = new System.Windows.Forms.Button();
             this.OpsGroup = new System.Windows.Forms.GroupBox();
             this.btnShutdown = new System.Windows.Forms.Button();
             this.eventLog = new System.Diagnostics.EventLog();
             this.mainTimer = new System.Windows.Forms.Timer(this.components);
-            this.btnRollLeft = new System.Windows.Forms.Button();
-            this.btnRollRight = new System.Windows.Forms.Button();
             this.mainStatusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.MotorControlsGroup.SuspendLayout();
@@ -129,7 +129,7 @@ namespace DroneOSClient
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.droneOSToolStripMenuItem,
             this.viewToolStripMenuItem,
-            this.flightPlanToolStripMenuItem,
+            this.MissionPlanToolStripMenuItem,
             this.connectionToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
@@ -141,46 +141,46 @@ namespace DroneOSClient
             // droneOSToolStripMenuItem
             // 
             this.droneOSToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnOpenFlight,
-            this.btnSaveFlight,
-            this.btnSaveFlightAs,
+            this.btnOpenMission,
+            this.btnSaveMission,
+            this.btnSaveMissionAs,
             this.btnExit});
             this.droneOSToolStripMenuItem.Name = "droneOSToolStripMenuItem";
             this.droneOSToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.droneOSToolStripMenuItem.Text = "DroneOS";
             // 
-            // btnOpenFlight
+            // btnOpenMission
             // 
-            this.btnOpenFlight.Name = "btnOpenFlight";
-            this.btnOpenFlight.ShortcutKeyDisplayString = "";
-            this.btnOpenFlight.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.btnOpenFlight.Size = new System.Drawing.Size(236, 22);
-            this.btnOpenFlight.Text = "Open Flight Plan";
-            this.btnOpenFlight.Click += new System.EventHandler(this.openFlightDialog);
+            this.btnOpenMission.Name = "btnOpenMission";
+            this.btnOpenMission.ShortcutKeyDisplayString = "";
+            this.btnOpenMission.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.btnOpenMission.Size = new System.Drawing.Size(247, 22);
+            this.btnOpenMission.Text = "Open Mission Plan";
+            this.btnOpenMission.Click += new System.EventHandler(this.openMissionDialog);
             // 
-            // btnSaveFlight
+            // btnSaveMission
             // 
-            this.btnSaveFlight.Name = "btnSaveFlight";
-            this.btnSaveFlight.ShortcutKeyDisplayString = "";
-            this.btnSaveFlight.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.btnSaveFlight.Size = new System.Drawing.Size(236, 22);
-            this.btnSaveFlight.Text = "Save Flight Plan";
+            this.btnSaveMission.Name = "btnSaveMission";
+            this.btnSaveMission.ShortcutKeyDisplayString = "";
+            this.btnSaveMission.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.btnSaveMission.Size = new System.Drawing.Size(247, 22);
+            this.btnSaveMission.Text = "Save Mission Plan";
             // 
-            // btnSaveFlightAs
+            // btnSaveMissionAs
             // 
-            this.btnSaveFlightAs.Name = "btnSaveFlightAs";
-            this.btnSaveFlightAs.ShortcutKeyDisplayString = "";
-            this.btnSaveFlightAs.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            this.btnSaveMissionAs.Name = "btnSaveMissionAs";
+            this.btnSaveMissionAs.ShortcutKeyDisplayString = "";
+            this.btnSaveMissionAs.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.S)));
-            this.btnSaveFlightAs.Size = new System.Drawing.Size(236, 22);
-            this.btnSaveFlightAs.Text = "Save Flight Plan As";
-            this.btnSaveFlightAs.Click += new System.EventHandler(this.saveFlightDialog);
+            this.btnSaveMissionAs.Size = new System.Drawing.Size(247, 22);
+            this.btnSaveMissionAs.Text = "Save Mission Plan As";
+            this.btnSaveMissionAs.Click += new System.EventHandler(this.saveMissionDialog);
             // 
             // btnExit
             // 
             this.btnExit.Name = "btnExit";
             this.btnExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.btnExit.Size = new System.Drawing.Size(236, 22);
+            this.btnExit.Size = new System.Drawing.Size(247, 22);
             this.btnExit.Text = "Exit";
             this.btnExit.Click += new System.EventHandler(this.mainExit);
             // 
@@ -248,13 +248,13 @@ namespace DroneOSClient
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.optionsToolStripMenuItem.Text = "Options";
             // 
-            // flightPlanToolStripMenuItem
+            // MissionPlanToolStripMenuItem
             // 
-            this.flightPlanToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MissionPlanToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripMenuItem});
-            this.flightPlanToolStripMenuItem.Name = "flightPlanToolStripMenuItem";
-            this.flightPlanToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
-            this.flightPlanToolStripMenuItem.Text = "Flight Plan";
+            this.MissionPlanToolStripMenuItem.Name = "MissionPlanToolStripMenuItem";
+            this.MissionPlanToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
+            this.MissionPlanToolStripMenuItem.Text = "Mission Plan";
             // 
             // newToolStripMenuItem
             // 
@@ -290,14 +290,14 @@ namespace DroneOSClient
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.btnAbout);
             // 
-            // openFlightPlan
+            // openMissionPlan
             // 
-            this.openFlightPlan.FileName = "openFileDialog1";
-            this.openFlightPlan.Filter = "DroneOS Flight|*.pln";
+            this.openMissionPlan.FileName = "openFileDialog1";
+            this.openMissionPlan.Filter = "DroneOS Mission|*.pln";
             // 
-            // saveFlightPlan
+            // saveMissionPlan
             // 
-            this.saveFlightPlan.Filter = "DroneOS Flight|*.pln";
+            this.saveMissionPlan.Filter = "DroneOS Mission|*.pln";
             // 
             // btnSurface
             // 
@@ -358,7 +358,7 @@ namespace DroneOSClient
             // btnForward
             // 
             this.btnForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnForward.Location = new System.Drawing.Point(93, 108);
+            this.btnForward.Location = new System.Drawing.Point(93, 122);
             this.btnForward.Name = "btnForward";
             this.btnForward.Size = new System.Drawing.Size(75, 30);
             this.btnForward.TabIndex = 8;
@@ -369,7 +369,7 @@ namespace DroneOSClient
             // btnRotateR
             // 
             this.btnRotateR.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRotateR.Location = new System.Drawing.Point(174, 125);
+            this.btnRotateR.Location = new System.Drawing.Point(174, 139);
             this.btnRotateR.Name = "btnRotateR";
             this.btnRotateR.Size = new System.Drawing.Size(75, 30);
             this.btnRotateR.TabIndex = 9;
@@ -380,7 +380,7 @@ namespace DroneOSClient
             // btnRotateL
             // 
             this.btnRotateL.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRotateL.Location = new System.Drawing.Point(12, 125);
+            this.btnRotateL.Location = new System.Drawing.Point(12, 139);
             this.btnRotateL.Name = "btnRotateL";
             this.btnRotateL.Size = new System.Drawing.Size(75, 30);
             this.btnRotateL.TabIndex = 10;
@@ -391,7 +391,7 @@ namespace DroneOSClient
             // btnReverse
             // 
             this.btnReverse.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReverse.Location = new System.Drawing.Point(93, 144);
+            this.btnReverse.Location = new System.Drawing.Point(93, 158);
             this.btnReverse.Name = "btnReverse";
             this.btnReverse.Size = new System.Drawing.Size(75, 30);
             this.btnReverse.TabIndex = 11;
@@ -437,10 +437,32 @@ namespace DroneOSClient
             this.MotorControlsGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MotorControlsGroup.Location = new System.Drawing.Point(708, 27);
             this.MotorControlsGroup.Name = "MotorControlsGroup";
-            this.MotorControlsGroup.Size = new System.Drawing.Size(259, 186);
+            this.MotorControlsGroup.Size = new System.Drawing.Size(259, 200);
             this.MotorControlsGroup.TabIndex = 14;
             this.MotorControlsGroup.TabStop = false;
             this.MotorControlsGroup.Text = "Motor Controls";
+            // 
+            // btnRollRight
+            // 
+            this.btnRollRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRollRight.Location = new System.Drawing.Point(174, 88);
+            this.btnRollRight.Name = "btnRollRight";
+            this.btnRollRight.Size = new System.Drawing.Size(75, 30);
+            this.btnRollRight.TabIndex = 15;
+            this.btnRollRight.Text = "Roll R";
+            this.btnRollRight.UseVisualStyleBackColor = true;
+            this.btnRollRight.Click += new System.EventHandler(this.btnRollRight_Click);
+            // 
+            // btnRollLeft
+            // 
+            this.btnRollLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRollLeft.Location = new System.Drawing.Point(12, 88);
+            this.btnRollLeft.Name = "btnRollLeft";
+            this.btnRollLeft.Size = new System.Drawing.Size(75, 30);
+            this.btnRollLeft.TabIndex = 14;
+            this.btnRollLeft.Text = "Roll L";
+            this.btnRollLeft.UseVisualStyleBackColor = true;
+            this.btnRollLeft.Click += new System.EventHandler(this.btnRollLeft_Click);
             // 
             // OpsGroup
             // 
@@ -479,28 +501,6 @@ namespace DroneOSClient
             this.mainTimer.Enabled = true;
             this.mainTimer.Tick += new System.EventHandler(this.mainTimer_Tick);
             // 
-            // btnRollLeft
-            // 
-            this.btnRollLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRollLeft.Location = new System.Drawing.Point(12, 72);
-            this.btnRollLeft.Name = "btnRollLeft";
-            this.btnRollLeft.Size = new System.Drawing.Size(75, 30);
-            this.btnRollLeft.TabIndex = 14;
-            this.btnRollLeft.Text = "Roll L";
-            this.btnRollLeft.UseVisualStyleBackColor = true;
-            this.btnRollLeft.Click += new System.EventHandler(this.btnRollLeft_Click);
-            // 
-            // btnRollRight
-            // 
-            this.btnRollRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRollRight.Location = new System.Drawing.Point(174, 72);
-            this.btnRollRight.Name = "btnRollRight";
-            this.btnRollRight.Size = new System.Drawing.Size(75, 30);
-            this.btnRollRight.TabIndex = 15;
-            this.btnRollRight.Text = "Roll R";
-            this.btnRollRight.UseVisualStyleBackColor = true;
-            this.btnRollRight.Click += new System.EventHandler(this.btnRollRight_Click);
-            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -519,6 +519,7 @@ namespace DroneOSClient
             this.Text = "DroneOS";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.exitProgram);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.mainForm_FormClosed);
+            this.Load += new System.EventHandler(this.mainForm_Load);
             this.mainStatusStrip.ResumeLayout(false);
             this.mainStatusStrip.PerformLayout();
             this.menuStrip.ResumeLayout(false);
@@ -539,14 +540,14 @@ namespace DroneOSClient
         private System.Windows.Forms.TextBox txtConsole;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem droneOSToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem btnOpenFlight;
-        private System.Windows.Forms.ToolStripMenuItem btnSaveFlightAs;
+        private System.Windows.Forms.ToolStripMenuItem btnOpenMission;
+        private System.Windows.Forms.ToolStripMenuItem btnSaveMissionAs;
         private System.Windows.Forms.ToolStripMenuItem btnExit;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStripMenuItem connectionToolStripMenuItem;
-        private OpenFileDialog openFlightPlan;
-        private SaveFileDialog saveFlightPlan;
+        private OpenFileDialog openMissionPlan;
+        private SaveFileDialog saveMissionPlan;
         private Button btnSurface;
         private Button btnStartStop;
         private Button btnManual;
@@ -565,14 +566,14 @@ namespace DroneOSClient
         private ToolStripMenuItem processedToolStripMenuItem1;
         private GroupBox MotorControlsGroup;
         private GroupBox OpsGroup;
-        private ToolStripMenuItem btnSaveFlight;
+        private ToolStripMenuItem btnSaveMission;
         private System.Diagnostics.EventLog eventLog;
         private ToolStripMenuItem serverStatusToolStripMenuItem;
         private ToolStripMenuItem sSHToolStripMenuItem;
         private Button btnShutdown;
         private ToolStripMenuItem debugToolStripMenuItem;
         private ToolStripMenuItem iOPinsToolStripMenuItem;
-        private ToolStripMenuItem flightPlanToolStripMenuItem;
+        private ToolStripMenuItem MissionPlanToolStripMenuItem;
         private Timer mainTimer;
         private ToolStripMenuItem optionsToolStripMenuItem;
         private ToolStripMenuItem newToolStripMenuItem;
