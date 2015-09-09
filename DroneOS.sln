@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DroneOSClient", "DroneOS\DroneOSClient.csproj", "{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerTest", "ServerTest\ServerTest.csproj", "{018AE8AC-45F2-402D-AD2F-E27FDE1CB74C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DroneOSClient", "DroneOSClient\DroneOSClient.csproj", "{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,16 +17,6 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}.Release|Win32.ActiveCfg = Release|Any CPU
 		{018AE8AC-45F2-402D-AD2F-E27FDE1CB74C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{018AE8AC-45F2-402D-AD2F-E27FDE1CB74C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{018AE8AC-45F2-402D-AD2F-E27FDE1CB74C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -37,6 +27,16 @@ Global
 		{018AE8AC-45F2-402D-AD2F-E27FDE1CB74C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{018AE8AC-45F2-402D-AD2F-E27FDE1CB74C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{018AE8AC-45F2-402D-AD2F-E27FDE1CB74C}.Release|Win32.ActiveCfg = Release|Any CPU
+		{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

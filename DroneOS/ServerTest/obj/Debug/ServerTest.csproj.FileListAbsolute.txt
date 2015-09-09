@@ -1,5 +1,0 @@
-C:\Users\Owen\Desktop\DroneOS\DroneOS\ServerTest\bin\Debug\ServerTest.exe.config
-C:\Users\Owen\Desktop\DroneOS\DroneOS\ServerTest\bin\Debug\ServerTest.exe
-C:\Users\Owen\Desktop\DroneOS\DroneOS\ServerTest\bin\Debug\ServerTest.pdb
-C:\Users\Owen\Desktop\DroneOS\DroneOS\ServerTest\obj\Debug\ServerTest.exe
-C:\Users\Owen\Desktop\DroneOS\DroneOS\ServerTest\obj\Debug\ServerTest.pdb
