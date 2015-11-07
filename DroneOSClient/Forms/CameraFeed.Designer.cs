@@ -1,4 +1,4 @@
-﻿namespace DroneOSClient
+﻿/*namespace DroneOSClient
 {
     partial class CameraFeed
     {
@@ -240,4 +240,4 @@
         private System.Windows.Forms.PictureBox feedRaw2;
         private System.Windows.Forms.PictureBox feedProc2;
     }
-}
+}*/

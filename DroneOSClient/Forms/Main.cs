@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Threading;
 using DroneOSClient.Handlers;
-using DroneOSClient.Resources;
 using DroneOSClient.NetworkEngine;
 
 namespace DroneOSClient
@@ -11,7 +9,7 @@ namespace DroneOSClient
     {
         //Constants
         public bool manuelControl { get; set; }
-        public bool active { get; set; }//wether or not the drone is active or "paused"
+        public bool active { get; set; }//Whether or not the drone is active or "paused"
         private bool goodStart = false;
         public static MainForm _mainForm;//Self declaration to reference in other files
 
@@ -33,7 +31,7 @@ namespace DroneOSClient
             tcp = new TcpConn();
 
             //Start Handlers
-            motors = new MotorHandler(serial);
+            motors = new MotorHandler(tcp);
             controller = new ControllerHandler(serial);
             commandHandler = new ConsoleCommandHandler(serial);
         }

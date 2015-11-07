@@ -6,7 +6,8 @@ namespace DroneOSClient
     static class DroneOSClient
     {
         //Start static variables
-        public const string DroneIP = "127.0.0.1";
+        //public const string DroneIP = "127.0.0.1";
+        public const string DroneIP = "169.235.156.88";
         public const int DronePort = 626;
         //End static variables
 
@@ -18,7 +19,7 @@ namespace DroneOSClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new loginForm());
+            Application.Run(new MainForm());
         }
     }
 }

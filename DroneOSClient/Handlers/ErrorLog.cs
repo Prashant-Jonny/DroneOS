@@ -15,10 +15,14 @@ namespace DroneOSClient.Handlers
             MainForm._mainForm.println(message);
         }
 
+        public static void print(String message)
+        {
+            MainForm._mainForm.print(message);
+        }
+
         public static void println(Error e, String m)
         {
             MainForm._mainForm.println(m);
-            //MainForm._mainForm.println(e.ToString() + " : " + m);
         }
     }
 }

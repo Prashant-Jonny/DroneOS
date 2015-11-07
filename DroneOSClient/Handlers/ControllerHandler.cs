@@ -10,20 +10,20 @@ namespace DroneOSClient.Handlers
     public class ControllerHandler
     {
         GamePadState gamePadState;
+        TcpConn con
 
         private bool connected = true;
-        private SerialConn serial;
-
+        
         //Sticks, globally declares for performance.
         private double leftX = 0;
         private double leftY = 0;
         private double rightX = 0;
         private double rightY = 0;
 
-        public ControllerHandler(SerialConn s)
+        public ControllerHandler(TcpConn con)
         {
             ErrorLog.println(Error.Info, "(4/5) ControllerHandler Started");
-            this.serial = s;
+            this.con = c;
         }
 
         public void UpdateInput()
@@ -61,25 +61,25 @@ namespace DroneOSClient.Handlers
                 println("rightY: " + rightY);*/
 
             try { 
-            //Send to Serial
+            //Send to tcp
             if (leftY < -5)
-                serial.sendPacket(PacketCreator.controlPacket(ThrusterPins.left, 2, true));
+                tcp.sendPacket(PacketCreator.controlPacket(ThrusterPins.left, 2, true));
             else if (leftY > 5)
-                serial.sendPacket(PacketCreator.controlPacket(ThrusterPins.left, 1));
+                tcp.sendPacket(PacketCreator.controlPacket(ThrusterPins.left, 1));
 
             if (rightY < -5)
-                serial.sendPacket(PacketCreator.controlPacket(ThrusterPins.right, 2, true));
+                tcp.sendPacket(PacketCreator.controlPacket(ThrusterPins.right, 2, true));
             else if (rightY > 5)
-                serial.sendPacket(PacketCreator.controlPacket(ThrusterPins.right, 2));
+                tcp.sendPacket(PacketCreator.controlPacket(ThrusterPins.right, 2));
 
         
             if (gamePadState.Buttons.LeftShoulder == ButtonState.Pressed)
-                serial.sendPacket(PacketCreator.controlPacket(ThrusterPins.vrt, 1, true));
+                tcp.sendPacket(PacketCreator.controlPacket(ThrusterPins.vrt, 1, true));
 
             if (gamePadState.Buttons.RightShoulder == ButtonState.Pressed)
-                serial.sendPacket(PacketCreator.controlPacket(ThrusterPins.vrt, 1));
+                tcp.sendPacket(PacketCreator.controlPacket(ThrusterPins.vrt, 1));
             } catch (NullReferenceException e){
-                ErrorLog.println("serial con failure: " + e);
+                ErrorLog.println("tcp con failure: " + e);
             }
 
             //Buttons

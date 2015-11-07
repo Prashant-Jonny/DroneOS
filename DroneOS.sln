@@ -1,11 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerTest", "ServerTest\ServerTest.csproj", "{018AE8AC-45F2-402D-AD2F-E27FDE1CB74C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DroneOSServer", "ServerTest\DroneOSServer.csproj", "{018AE8AC-45F2-402D-AD2F-E27FDE1CB74C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DroneOSClient", "DroneOSClient\DroneOSClient.csproj", "{0859B944-E3C0-4EDD-B555-6FEFE100DA4E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{018AE8AC-45F2-402D-AD2F-E27FDE1CB74C} = {018AE8AC-45F2-402D-AD2F-E27FDE1CB74C}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

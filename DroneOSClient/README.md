@@ -1,12 +1,13 @@
 ﻿ToDo:
 More threading
 XML mission planning
-XML documentatiion
+XML documentation
 .ini file reading
 
-Start server software, possibly in python
+Start server software
 Add error filtering in settings form, add functionality
 Serial/TCP Disconnect handling
 ErrorLog output
-Ping reporting for network handling.
+Ping reporting for network handling
+Inbound TCP handling
 UdpCon

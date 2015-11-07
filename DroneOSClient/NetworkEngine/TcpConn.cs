@@ -23,19 +23,29 @@ namespace DroneOSClient.NetworkEngine
             {
                 clientSocket.Connect(DroneOSClient.DroneIP, DroneOSClient.DronePort);
                 ErrorLog.println("Connected on " + DroneOSClient.DroneIP + ":" + DroneOSClient.DronePort);
+                ioStream = clientSocket.GetStream();
+                this.sendPacket(PacketCreator.SendHello());
                 return true;
             } catch (Exception e){
                 ErrorLog.println(Error.Fatal, "Was not able to connect to TCP server:\n " + e);
-                clientSocket.Close();
+                clientSocket.Close();//Close to prevent possible memory leak in the heap
                 return false;
             }
         }
 
         public void sendPacket(byte[] packet)
         {
-            ioStream = clientSocket.GetStream();
+            ErrorLog.print("Sending packet (2): ");
+            printBytes(packet);
+            ErrorLog.println("");
             ioStream.Write(packet, 0, packet.Length);
             ioStream.Flush();
+        }
+
+        private void printBytes(byte[] bytes)
+        {
+            foreach (byte x in bytes)
+                ErrorLog.print(x + " ");
         }
 
         public void recvPacket()
