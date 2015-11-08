@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text;
 using System.Threading.Tasks;
-using DroneOSClient.Resources;
+using DroneOSServer.Resources;
 
-namespace DroneOSClient.NetworkEngine
+namespace DroneOSServer.NetworkEngine
 {
     class PacketRecv
     {

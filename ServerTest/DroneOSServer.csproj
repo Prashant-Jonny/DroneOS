@@ -43,7 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\DroneOSClient\Resources\OpCodes.cs">
+      <Link>Handlers\OpCodes.cs</Link>
+    </Compile>
+    <Compile Include="Handlers\MotorHandler.cs" />
+    <Compile Include="Handlers\PacketCreator.cs" />
     <Compile Include="Handlers\SerialConn.cs" />
+    <Compile Include="Handlers\ThrusterPins.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

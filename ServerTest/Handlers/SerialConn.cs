@@ -1,23 +1,22 @@
-﻿using DroneOSClient.Handlers;
-using System;
+﻿using System;
 using System.IO.Ports;
 using System.Threading;
 
-namespace DroneOSClient.NetworkEngine
+namespace DroneOSServer.NetworkEngine
 {
     public class SerialConn
     {
         private SerialPort _serialPort;
 
         public SerialConn() {
-            ErrorLog.println(Error.Info, "(1/5) SerialCon Started");
+            Console.WriteLine("SerialCon Started");
         }
 
         public void startCon()
         {
             if (!setComPort())
             {
-                ErrorLog.println(Error.Fatal, "Could not communicate with Arduino");
+                Console.WriteLine("Could not communicate with Arduino");
                 return;
             }
         }
@@ -30,10 +29,10 @@ namespace DroneOSClient.NetworkEngine
                 foreach (string port in ports)//Cycle thru COM ports
                 {
                     _serialPort = new SerialPort(port, 9600);//Set up serial port w/ this bit transfer rate
-                    ErrorLog.println("Checking port for Arduino " + port);
+                    Console.WriteLine("Checking port for Arduino " + port);
                     if (detectArduino())
                     {
-                        ErrorLog.println("Connected to Arduino on " + port);
+                        Console.WriteLine("Connected to Arduino on " + port);
                         return true;//Return when we have the correct port
                     }
                     else
@@ -42,7 +41,7 @@ namespace DroneOSClient.NetworkEngine
             }
             catch (Exception e)
             {
-                ErrorLog.println("Error in setComPort(): " + e);
+                Console.WriteLine("Error in setComPort(): " + e);
             }
             return false;//Default to false if nothing is found
         }
@@ -51,16 +50,16 @@ namespace DroneOSClient.NetworkEngine
         {
             try
             {
-                ErrorLog.println(Error.Info, "Running detection test");
+                Console.WriteLine("Running detection test");
                 _serialPort.Open();//Open the serial connection
                 this.sendPacket(PacketCreator.SendHello());
 
-                ErrorLog.println(Error.Info, "Wrote to arduino");
+                Console.WriteLine("Wrote to arduino");
                 Thread.Sleep(200);
 
                 //Receiving
                 int count = _serialPort.BytesToRead;
-                ErrorLog.println(Error.Info, "return bytes count: " + count);
+                Console.WriteLine("return bytes count: " + count);
 
                 string returnMessage = "";
                 while (count > 0)//build character
@@ -68,7 +67,7 @@ namespace DroneOSClient.NetworkEngine
                     returnMessage += Convert.ToChar(_serialPort.ReadByte());
                     count--;
                 }
-                ErrorLog.println(Error.Info, "Arduino Returned: " + returnMessage);
+                Console.WriteLine("Arduino Returned: " + returnMessage);
                 if (returnMessage.Contains("HELLO FROM ARDUINO"))
                     return true;
                 else
@@ -77,7 +76,7 @@ namespace DroneOSClient.NetworkEngine
             }
             catch (Exception e)
             {
-                ErrorLog.println(Error.Info, "Error in DetectArduino(): " + e);
+                Console.WriteLine("Error in DetectArduino(): " + e);
                 return false;
             }
         }
@@ -91,7 +90,7 @@ namespace DroneOSClient.NetworkEngine
             }
             catch (Exception e)
             {
-                ErrorLog.println(Error.Fatal, "Error closing connection " + e);
+                Console.WriteLine("Error closing connection " + e);
                 return false;
             }
         }

@@ -1,9 +1,9 @@
-﻿using DroneOSClient.Handlers;
+﻿using DroneOSServer.Handlers;
 using System;
 using System.Net.Sockets;
 using System.Text;
 
-namespace DroneOSClient.NetworkEngine
+namespace DroneOSServer.NetworkEngine
 {
     public class TcpConn
     {

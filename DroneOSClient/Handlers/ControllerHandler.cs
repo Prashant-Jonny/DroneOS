@@ -1,29 +1,27 @@
-﻿using DroneOSClient;
-using DroneOSClient.NetworkEngine;
-using DroneOSClient.Resources;
+﻿using DroneOSServer;
+using DroneOSServer.NetworkEngine;
+using DroneOSServer.Resources;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
 
-namespace DroneOSClient.Handlers
+namespace DroneOSServer.Handlers
 {
     public class ControllerHandler
     {
-        GamePadState gamePadState;
-        TcpConn con
+        private GamePadState gamePadState;
+        private TcpConn tcp;
 
         private bool connected = true;
         
         //Sticks, globally declares for performance.
-        private double leftX = 0;
-        private double leftY = 0;
-        private double rightX = 0;
-        private double rightY = 0;
+        private double leftX = 0, leftY = 0, 
+                      rightX = 0, rightY = 0;
 
-        public ControllerHandler(TcpConn con)
+        public ControllerHandler(TcpConn c)
         {
             ErrorLog.println(Error.Info, "(4/5) ControllerHandler Started");
-            this.con = c;
+            this.tcp = c;
         }
 
         public void UpdateInput()

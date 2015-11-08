@@ -1,4 +1,4 @@
-﻿namespace DroneOSClient.Resources
+﻿namespace DroneOSServer.Resources
 {
     public enum SendOpcodes : byte
     {

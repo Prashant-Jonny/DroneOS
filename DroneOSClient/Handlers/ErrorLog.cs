@@ -1,7 +1,7 @@
-﻿using DroneOSClient;
+﻿using DroneOSServer;
 using System;
 
-namespace DroneOSClient.Handlers
+namespace DroneOSServer.Handlers
 {
     enum Error
     {

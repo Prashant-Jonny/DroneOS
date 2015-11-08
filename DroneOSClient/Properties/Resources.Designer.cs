@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DroneOSClient.Properties {
+namespace DroneOSServer.Properties {
     using System;
     
     

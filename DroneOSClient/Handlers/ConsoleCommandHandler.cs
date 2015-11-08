@@ -1,15 +1,12 @@
-﻿using DroneOSClient.NetworkEngine;
+﻿using DroneOSServer.NetworkEngine;
 
-namespace DroneOSClient.Handlers
+namespace DroneOSServer.Handlers
 {
     public class ConsoleCommandHandler
     {
-        private SerialConn serial;
-
-        public ConsoleCommandHandler(SerialConn s)
+        public ConsoleCommandHandler()
         {
             ErrorLog.println(Error.Info, "(5/5) ConsoleCommandHandler Started\n");
-            this.serial = s;
         }
         public void processCommand(string args)
         {

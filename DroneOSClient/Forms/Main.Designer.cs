@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-namespace DroneOSClient
+namespace DroneOSServer
 {
     partial class MainForm
     {

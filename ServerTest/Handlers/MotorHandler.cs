@@ -1,22 +1,20 @@
-﻿using DroneOSClient.Resources;
-using DroneOSClient.NetworkEngine;
-using DroneOSClient.Handlers;
+﻿using DroneOSServer.NetworkEngine;
+using DroneOSServer.Resources;
+using System;
 
-namespace DroneOSClient.Handlers
+namespace DroneOSServer.Handlers
 {
     public class MotorHandler
     {
-        private bool init = false;
         private SerialConn serial;
 
         public MotorHandler()
         {
-            init = true;
         }
 
         public MotorHandler(SerialConn s)
         {
-            ErrorLog.println(Error.Info, "(3/5) MotorHandler Started");
+            Console.WriteLine("MotorHandler Started");
             this.serial = s;
         }
 

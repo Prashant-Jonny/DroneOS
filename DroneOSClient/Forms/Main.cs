@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using DroneOSClient.Handlers;
-using DroneOSClient.NetworkEngine;
+using DroneOSServer.Handlers;
+using DroneOSServer.NetworkEngine;
 
-namespace DroneOSClient
+namespace DroneOSServer
 {
     public partial class MainForm : Form
     {
@@ -14,11 +14,9 @@ namespace DroneOSClient
         public static MainForm _mainForm;//Self declaration to reference in other files
 
         //Connections
-        private SerialConn serial;
         private TcpConn tcp;
 
         //Handlers
-        private MotorHandler motors;
         private ControllerHandler controller;
         private ConsoleCommandHandler commandHandler;
 
@@ -26,12 +24,11 @@ namespace DroneOSClient
         {
             InitializeComponent();
             _mainForm = this;
-            //Start Cons
-            serial = new SerialConn();
+            
+            //Start Con
             tcp = new TcpConn();
 
             //Start Handlers
-            motors = new MotorHandler(tcp);
             controller = new ControllerHandler(serial);
             commandHandler = new ConsoleCommandHandler(serial);
         }
@@ -153,7 +150,7 @@ namespace DroneOSClient
         //Motor Controls
         private void btnRaise_Click(object sender, EventArgs e)
         {
-            motors.ctrlRise((byte)5);
+            tcp.sendPacket(PacketCreator.controlPacket()); motors.ctrlRise((byte)5);
         }
 
         private void btnDive_Click(object sender, EventArgs e)

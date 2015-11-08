@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace DroneOSClient
+namespace DroneOSServer
 {
     public partial class loginForm : Form
     {

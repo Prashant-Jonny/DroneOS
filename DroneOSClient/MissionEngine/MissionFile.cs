@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DroneOSClient.MissionEngine
+namespace DroneOSServer.MissionEngine
 {
     class MissionFile
     {

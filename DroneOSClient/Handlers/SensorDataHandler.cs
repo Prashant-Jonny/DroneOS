@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace DroneOSClient.Handlers
+namespace DroneOSServer.Handlers
 {
     class SensorDataHandler
     {

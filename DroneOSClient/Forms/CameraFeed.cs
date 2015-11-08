@@ -4,7 +4,7 @@ using Emgu.CV.UI;
 using Emgu.CV.Structure;
 using System.Windows.Forms;
 
-namespace DroneOSClient
+namespace DroneOSServer
 {
     public partial class CameraFeed : Form
     {

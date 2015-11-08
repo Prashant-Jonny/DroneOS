@@ -1,5 +1,5 @@
-﻿using System;
-using DroneOSServer.Resources;
+﻿using DroneOSServer.Resources;
+using System;
 
 namespace DroneOSServer.NetworkEngine
 {

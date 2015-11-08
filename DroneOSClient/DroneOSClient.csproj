@@ -116,7 +116,6 @@
     <Compile Include="NetworkEngine\PacketRecv.cs" />
     <Compile Include="Resources\OpCodes.cs" />
     <Compile Include="Handlers\ErrorLog.cs" />
-    <Compile Include="Handlers\MotorHandler.cs" />
     <Compile Include="Handlers\ControllerHandler.cs" />
     <Compile Include="Handlers\ConsoleCommandHandler.cs" />
     <Compile Include="MissionEngine\Step.cs" />
